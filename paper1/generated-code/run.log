@@ -1,0 +1,74 @@
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.sse4_2'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx1_0'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx2_0'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.bmi1'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.bmi2'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx512f'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx512cd'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx512dq'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx512bw'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.avx512vl'. Detail: [errno 1] Operation not permitted
+Linear epoch 1: train=0.444402 validation=0.377135
+Linear epoch 2: train=0.366081 validation=0.362131
+Linear epoch 3: train=0.358220 validation=0.356783
+Linear epoch 4: train=0.354619 validation=0.362041
+Linear epoch 5: train=0.352943 validation=0.353428
+Linear epoch 6: train=0.350466 validation=0.354644
+Linear epoch 7: train=0.349639 validation=0.349002
+Linear epoch 8: train=0.349556 validation=0.349347
+Linear epoch 9: train=0.348664 validation=0.349066
+Linear epoch 10: train=0.348171 validation=0.350038
+Linear epoch 11: train=0.348473 validation=0.348111
+Linear epoch 12: train=0.347436 validation=0.351235
+Linear epoch 13: train=0.347633 validation=0.348044
+Linear epoch 14: train=0.347539 validation=0.346254
+Linear epoch 15: train=0.347471 validation=0.347719
+Linear epoch 16: train=0.347581 validation=0.347814
+Linear epoch 17: train=0.346639 validation=0.347583
+Linear epoch 18: train=0.347045 validation=0.347063
+Linear epoch 19: train=0.347068 validation=0.345639
+Linear epoch 20: train=0.346894 validation=0.345037
+Linear epoch 21: train=0.347044 validation=0.352096
+Linear epoch 22: train=0.346921 validation=0.347544
+Linear epoch 23: train=0.346582 validation=0.345111
+Linear epoch 24: train=0.347010 validation=0.345776
+Linear epoch 25: train=0.347030 validation=0.347405
+FINAL Linear: MSE=0.427660 MAE=0.441944
+NLinear epoch 1: train=0.429679 validation=0.375666
+NLinear epoch 2: train=0.369762 validation=0.361057
+NLinear epoch 3: train=0.363576 validation=0.355479
+NLinear epoch 4: train=0.361038 validation=0.355885
+NLinear epoch 5: train=0.358415 validation=0.363999
+NLinear epoch 6: train=0.358150 validation=0.350309
+NLinear epoch 7: train=0.356121 validation=0.362689
+NLinear epoch 8: train=0.355450 validation=0.349225
+NLinear epoch 9: train=0.356097 validation=0.358636
+NLinear epoch 10: train=0.355301 validation=0.352416
+NLinear epoch 11: train=0.354431 validation=0.353930
+NLinear epoch 12: train=0.355011 validation=0.350596
+NLinear epoch 13: train=0.354763 validation=0.354758
+FINAL NLinear: MSE=0.434310 MAE=0.447443
+DLinear epoch 1: train=0.419357 validation=0.358182
+DLinear epoch 2: train=0.356921 validation=0.353573
+DLinear epoch 3: train=0.353241 validation=0.353075
+DLinear epoch 4: train=0.351589 validation=0.360422
+DLinear epoch 5: train=0.350803 validation=0.352098
+DLinear epoch 6: train=0.349237 validation=0.354734
+DLinear epoch 7: train=0.349310 validation=0.348018
+DLinear epoch 8: train=0.349493 validation=0.350142
+DLinear epoch 9: train=0.349090 validation=0.349570
+DLinear epoch 10: train=0.349136 validation=0.352467
+DLinear epoch 11: train=0.349818 validation=0.347610
+DLinear epoch 12: train=0.348726 validation=0.350919
+DLinear epoch 13: train=0.349030 validation=0.348075
+DLinear epoch 14: train=0.348990 validation=0.346473
+DLinear epoch 15: train=0.349683 validation=0.348316
+DLinear epoch 16: train=0.349780 validation=0.348666
+DLinear epoch 17: train=0.348733 validation=0.349527
+DLinear epoch 18: train=0.349137 validation=0.350221
+DLinear epoch 19: train=0.349119 validation=0.348708
+FINAL DLinear: MSE=0.428687 MAE=0.443430
+FINAL Repeat: MSE=1.655852 MAE=0.845358

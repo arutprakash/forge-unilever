@@ -1,0 +1,12 @@
+{
+  "model": "Repeat",
+  "mse": 1.6558518846611896,
+  "mae": 0.8453581056165014,
+  "elements": 2277408,
+  "parameters": 0,
+  "best_epoch": 0,
+  "epochs_run": 0,
+  "validation_mse": null,
+  "test_windows": 3389,
+  "seconds": 0.23336065799999517
+}

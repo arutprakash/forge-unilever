@@ -1,0 +1,6 @@
+paper1/.venv/
+__pycache__/
+*.pyc
+paper1/results/**/.matplotlib/
+paper1/results/**/*.pth
+paper1/results/**/*.npy

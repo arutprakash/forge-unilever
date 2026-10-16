@@ -1,0 +1,144 @@
+{
+  "configuration": {
+    "dataset": "/Users/arut/repo/forge-unilever/datasets/ETTh1.csv",
+    "output": "/Users/arut/repo/forge-unilever/paper1/generated-code/results/etth1-336-96",
+    "models": [
+      "Linear",
+      "NLinear",
+      "DLinear",
+      "Repeat"
+    ],
+    "lookback": 336,
+    "horizon": 96,
+    "epochs": 50,
+    "patience": 5,
+    "min_delta": 1e-06,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "seed": 42
+  },
+  "dataset": {
+    "rows": 17420,
+    "columns": [
+      "HUFL",
+      "HULL",
+      "MUFL",
+      "MULL",
+      "LUFL",
+      "LULL",
+      "OT"
+    ],
+    "mean": [
+      7.807025544026027,
+      1.9638457706364187,
+      4.854088594068457,
+      0.7027733450419731,
+      2.9906340412969477,
+      0.7704704349555455,
+      17.292530528345626
+    ],
+    "scale": [
+      6.134403361410595,
+      2.1455700413380594,
+      5.908511495039344,
+      1.9702885996497426,
+      1.2502961279520424,
+      0.6677933692498211,
+      8.513664476018814
+    ],
+    "split_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "splits": {
+      "train": {
+        "target_rows_start": 0,
+        "target_rows_stop_exclusive": 10452,
+        "target_time_start": "2016-07-01 00:00:00",
+        "target_time_end": "2017-09-09 11:00:00",
+        "windows": 10021
+      },
+      "validation": {
+        "target_rows_start": 10452,
+        "target_rows_stop_exclusive": 13936,
+        "target_time_start": "2017-09-09 12:00:00",
+        "target_time_end": "2018-02-01 15:00:00",
+        "windows": 3389
+      },
+      "test": {
+        "target_rows_start": 13936,
+        "target_rows_stop_exclusive": 17420,
+        "target_time_start": "2018-02-01 16:00:00",
+        "target_time_end": "2018-06-26 19:00:00",
+        "windows": 3389
+      }
+    }
+  },
+  "dataset_sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066",
+  "paper_sha256": "97abddd1821cc72942c8d7ddde7e99466bb91f1bddc37c2b54e0e97be7b5be1b",
+  "source_sha256": {
+    "data.py": "888461e0313018953d9afc1083769ec7dc3f35745a849d36d2a6d9662f6fc8fd",
+    "models.py": "06b6e776098508948e463f3984ab6081a3695cc5cf03f96ed127a2cae12d872d",
+    "run.py": "decd0c5acbb9ea8d29b9ebb87d207be4e4a3f768cb9a937cdcea1475ccd4e04e",
+    "test_paper_properties.py": "f56b6b75c6bb4a819c3df80753eb1f8b9ec476586ddc1de3d4e5de7732df8956"
+  },
+  "environment": {
+    "python": "3.9.6",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "device": "cpu",
+    "threads": 1
+  },
+  "source_basis": "Local paper1.pdf, Section 4, Section 5, Appendix B.2 and D.1; no author-code imports",
+  "results": [
+    {
+      "model": "Linear",
+      "mse": 0.42766036383010647,
+      "mae": 0.4419437456395533,
+      "elements": 2277408,
+      "parameters": 32256,
+      "best_epoch": 20,
+      "epochs_run": 25,
+      "validation_mse": 0.3450365958717529,
+      "test_windows": 3389,
+      "seconds": 16.432814885
+    },
+    {
+      "model": "NLinear",
+      "mse": 0.4343095246997959,
+      "mae": 0.4474433472770293,
+      "elements": 2277408,
+      "parameters": 32256,
+      "best_epoch": 8,
+      "epochs_run": 13,
+      "validation_mse": 0.34922545711946773,
+      "test_windows": 3389,
+      "seconds": 9.814635484
+    },
+    {
+      "model": "DLinear",
+      "mse": 0.42868719808531003,
+      "mae": 0.4434304596469575,
+      "elements": 2277408,
+      "parameters": 64512,
+      "best_epoch": 14,
+      "epochs_run": 19,
+      "validation_mse": 0.3464730827792954,
+      "test_windows": 3389,
+      "seconds": 34.16610045
+    },
+    {
+      "model": "Repeat",
+      "mse": 1.6558518846611896,
+      "mae": 0.8453581056165014,
+      "elements": 2277408,
+      "parameters": 0,
+      "best_epoch": 0,
+      "epochs_run": 0,
+      "validation_mse": null,
+      "test_windows": 3389,
+      "seconds": 0.23336065799999517
+    }
+  ]
+}
