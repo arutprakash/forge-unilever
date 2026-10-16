@@ -1,0 +1,49 @@
+{
+  "checks": "source hashes, dataset/scaler, test row indices, target samples, finite arrays, full-array metrics, checkpoint selection and first/last forecast replay",
+  "results": [
+    {
+      "model": "Linear",
+      "prediction_shape": [
+        3389,
+        96,
+        7
+      ],
+      "mse_recomputed": 0.42766036383010636,
+      "mae_recomputed": 0.4419437456395533,
+      "checkpoint_replay": "passed"
+    },
+    {
+      "model": "NLinear",
+      "prediction_shape": [
+        3389,
+        96,
+        7
+      ],
+      "mse_recomputed": 0.434309524699796,
+      "mae_recomputed": 0.4474433472770293,
+      "checkpoint_replay": "passed"
+    },
+    {
+      "model": "DLinear",
+      "prediction_shape": [
+        3389,
+        96,
+        7
+      ],
+      "mse_recomputed": 0.4286871980853102,
+      "mae_recomputed": 0.4434304596469575,
+      "checkpoint_replay": "passed"
+    },
+    {
+      "model": "Repeat",
+      "prediction_shape": [
+        3389,
+        96,
+        7
+      ],
+      "mse_recomputed": 1.6558518846611903,
+      "mae_recomputed": 0.8453581056165014,
+      "checkpoint_replay": "baseline replay passed"
+    }
+  ]
+}

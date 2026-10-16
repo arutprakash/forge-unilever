@@ -1,0 +1,12 @@
+{
+  "model": "DLinear",
+  "mse": 0.42868719808531003,
+  "mae": 0.4434304596469575,
+  "elements": 2277408,
+  "parameters": 64512,
+  "best_epoch": 14,
+  "epochs_run": 19,
+  "validation_mse": 0.3464730827792954,
+  "test_windows": 3389,
+  "seconds": 34.16610045
+}
