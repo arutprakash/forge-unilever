@@ -1,0 +1,118 @@
+{
+  "policy": {
+    "name": "forge-executed-reference-v1",
+    "basis": "Workbook-inspired numerical reproduction; not an official implementation of a published benchmark",
+    "metrics": [
+      "mse",
+      "mae"
+    ],
+    "relative_tolerance": 0.05,
+    "reference": "freshly executed and replayed author implementation on the identical protocol and dataset",
+    "require_prediction_replay": true,
+    "require_all_models": true,
+    "source": {
+      "workbook": "Forge_candidate_papers_and_benchmarks.xlsx",
+      "sha256": "a4e6b1fbecc74edc8a4b01600811c1144f06b6fb1b4dfc11042afb5198bc01c9",
+      "sheet": "Related benchmarks",
+      "cells": [
+        "A10:K10",
+        "A4:K4",
+        "A2:K2",
+        "A9:K9"
+      ],
+      "inspiration": [
+        "AutoReproduce: execution rate and relative performance gap",
+        "RECLAIM: pin targets before execution and trace numbers to runs",
+        "Artisan: distinguish execution failure from numerical mismatch; copying requires review",
+        "AutoExperiment: a 5% comparison band (adopted here as an explicit Forge policy)"
+      ]
+    }
+  },
+  "published_reference": null,
+  "published_reference_used_for_pass_fail": false,
+  "execution_rate": 1.0,
+  "stages": {
+    "author": {
+      "status": "evaluated",
+      "elapsed_seconds": 137.8561230280029,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 266069,
+          "cached_input_tokens": 222336,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4745,
+          "reasoning_output_tokens": 49
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    },
+    "paper-only": {
+      "status": "evaluated",
+      "elapsed_seconds": 137.46778182699927,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 338679,
+          "cached_input_tokens": 291712,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4678,
+          "reasoning_output_tokens": 208
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    }
+  },
+  "models": [
+    {
+      "model": "OLS",
+      "metrics": {
+        "mse": {
+          "author": 0.37343621140129757,
+          "generated": 0.37343621143085637,
+          "difference": 2.955879985222509e-11,
+          "relative_gap": 7.915354470126886e-11,
+          "absolute_relative_gap": 7.915354470126886e-11,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3992818391381243,
+          "generated": 0.3992818391577162,
+          "difference": 1.9591883670955212e-11,
+          "relative_gap": 4.9067805621326433e-11,
+          "absolute_relative_gap": 4.9067805621326433e-11,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "OLS_IN",
+      "metrics": {
+        "mse": {
+          "author": 0.373383974624594,
+          "generated": 0.37338397962354913,
+          "difference": 4.99895513872417e-09,
+          "relative_gap": 1.338824234154719e-08,
+          "absolute_relative_gap": 1.338824234154719e-08,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3993893259645418,
+          "generated": 0.3993893269353393,
+          "difference": 9.707974979455969e-10,
+          "relative_gap": 2.430704665431608e-09,
+          "absolute_relative_gap": 2.430704665431608e-09,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "method_fidelity": "not automatically established",
+  "copying_assessment": "not automatically established; inspect source and action traces",
+  "outcome": "numerical_match",
+  "all_metrics_within_tolerance": true
+}

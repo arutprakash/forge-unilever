@@ -1,0 +1,47 @@
+{
+  "models": [
+    {
+      "model": "OLS",
+      "metrics": {
+        "mse": {
+          "author": 0.37343621140129757,
+          "generated": 0.37343621143085637,
+          "difference": 2.955879985222509e-11,
+          "relative_gap": 7.915354470126886e-11,
+          "absolute_relative_gap": 7.915354470126886e-11,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3992818391381243,
+          "generated": 0.3992818391577162,
+          "difference": 1.9591883670955212e-11,
+          "relative_gap": 4.9067805621326433e-11,
+          "absolute_relative_gap": 4.9067805621326433e-11,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "OLS_IN",
+      "metrics": {
+        "mse": {
+          "author": 0.373383974624594,
+          "generated": 0.37338397962354913,
+          "difference": 4.99895513872417e-09,
+          "relative_gap": 1.338824234154719e-08,
+          "absolute_relative_gap": 1.338824234154719e-08,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3993893259645418,
+          "generated": 0.3993893269353393,
+          "difference": 9.707974979455969e-10,
+          "relative_gap": 2.430704665431608e-09,
+          "absolute_relative_gap": 2.430704665431608e-09,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "outcome": "numerical_match"
+}

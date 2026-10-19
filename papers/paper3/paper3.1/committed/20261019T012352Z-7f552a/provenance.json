@@ -1,0 +1,165 @@
+{
+  "run_id": "20261019T012352Z-7f552a",
+  "experiment": "paper3.1",
+  "started_utc": "2026-10-19T01:23:52.809011+00:00",
+  "finished_utc": "2026-10-19T01:29:54.560426+00:00",
+  "stages": {
+    "author": {
+      "status": "evaluated",
+      "elapsed_seconds": 137.8561230280029,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 266069,
+          "cached_input_tokens": 222336,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4745,
+          "reasoning_output_tokens": 49
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    },
+    "paper-only": {
+      "status": "evaluated",
+      "elapsed_seconds": 137.46778182699927,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 338679,
+          "cached_input_tokens": 291712,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4678,
+          "reasoning_output_tokens": 208
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    }
+  },
+  "source_seal": {
+    "verified_files": 329,
+    "seal_sha256": "a772b192e43aeb951cf2fdac67a05da9d50a23bda1f7935834dcbe614cb73101"
+  },
+  "evaluation_id": null,
+  "evaluation_seal": null,
+  "author": {
+    "url": "https://github.com/sir-lab/linear-forecasting.git",
+    "ref": "HEAD"
+  },
+  "author_commit": "9abf0db2b73ff27ebdaf8b852d9eca0fed660b71",
+  "inputs": {
+    "dataset.csv": {
+      "bytes": 2589657,
+      "sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066"
+    },
+    "paper.pdf": {
+      "bytes": 969981,
+      "sha256": "46c4ec662bb221f87d44f0fb874f85c1f66f84c8daa830109dd221e7ce879f61"
+    },
+    "protocol.json": {
+      "bytes": 920,
+      "sha256": "f76c66704e269a568ccfa5b8b1395183d593f0ee3a50bed1b69f77a7e2740a15"
+    }
+  },
+  "images": {
+    "runtime": {
+      "tag": "forge-runtime:20db5c5ae344",
+      "id": "sha256:bd14e21fed03ece21c8cde9b66a11f1dd4afd7fd9372cb7e39b317d5bc0418b3",
+      "repo_digests": [
+        "forge-runtime@sha256:bd14e21fed03ece21c8cde9b66a11f1dd4afd7fd9372cb7e39b317d5bc0418b3"
+      ]
+    },
+    "controller": {
+      "tag": "forge-controller:20db5c5ae344",
+      "id": "sha256:4bb730446ef325a95f5e94199f46f87090b07b414dd8de682ffbb740b81ae777",
+      "repo_digests": [
+        "forge-controller@sha256:4bb730446ef325a95f5e94199f46f87090b07b414dd8de682ffbb740b81ae777"
+      ]
+    },
+    "proxy": {
+      "tag": "forge-proxy:20db5c5ae344",
+      "id": "sha256:61526e9d7e3d2028b48cc702d55e97ae72d7c748befc0d7a72f8c42ac091e8e2",
+      "repo_digests": [
+        "forge-proxy@sha256:61526e9d7e3d2028b48cc702d55e97ae72d7c748befc0d7a72f8c42ac091e8e2"
+      ]
+    }
+  },
+  "pipeline_sources": {
+    "audit.py": "8b9ed28434ac3b8fd2e464a62d39aca39f0301d587f5e3332ebca7e092e3ac83",
+    "benchmark.py": "3ee8c352c935651a9d1de935eff72a21f77844182efb6546fbd8842a244d43ba",
+    "configuration.py": "fe6a884c04f92c83bdfa2f749e33b5ee5ff2ce7089c8f50609c74cbafb053804",
+    "exporter.py": "be53a25b3a38a290b6cf8939919f2ea4f6840df299a237705a0a2e15cd1dd072",
+    "pipeline.py": "4e85605bcd371fc7870017242e336b5a7e68487950389e156f0a6b29f77decf7",
+    "suites.py": "063979c0a09e88b0ebaf7bed36b7a0fab2e12b13155087a154655af1844033e7"
+  },
+  "copied_files": {
+    "generated-code/README.md": {
+      "source": "paper-only/generated-code/README.md",
+      "origin": "run",
+      "sha256": "58e3e047f1b0f65ebf6be451044384d44369097e93f6f4a63727dcbbf444971b"
+    },
+    "generated-code/experiment.py": {
+      "source": "paper-only/generated-code/experiment.py",
+      "origin": "run",
+      "sha256": "c6564a80bc60eec6232f9c8dc6d081bcfb282c7c65164c3796e4ba5a41ec483d"
+    },
+    "generated-code/implementation.md": {
+      "source": "paper-only/generated-code/implementation.md",
+      "origin": "run",
+      "sha256": "9196be51a2490699bb1b397b666df1837a73ab7e4edb07c1728e2bd0b3150a2f"
+    },
+    "generated-code/replay.json": {
+      "source": "paper-only/generated-code/replay.json",
+      "origin": "run",
+      "sha256": "65aae748843e4d7e7bef74da8dfd91a88ee1c325e4f5b410a49a3405645ce687"
+    },
+    "protocol.json": {
+      "source": "inputs/protocol.json",
+      "origin": "run",
+      "sha256": "f76c66704e269a568ccfa5b8b1395183d593f0ee3a50bed1b69f77a7e2740a15"
+    },
+    "results/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "run",
+      "sha256": "d3e41976fb1ddc9223c0057b2038d942056a277ed2c63c0d2b68e419267439e7"
+    },
+    "results/benchmark.json": {
+      "source": "benchmark.json",
+      "origin": "run",
+      "sha256": "b6a37c62a7f19228e7fb904218358dbc1aa035576593a0076f87b12a46c81276"
+    },
+    "results/comparison.json": {
+      "source": "comparison.json",
+      "origin": "run",
+      "sha256": "cab2669479961ae4ef5492c2a8abc589f35aaf27e4aeaf531d01b5399ac0bd63"
+    },
+    "results/benchmark-policy.json": {
+      "source": "benchmark-policy.json",
+      "origin": "run",
+      "sha256": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e"
+    },
+    "results/author-metrics.json": {
+      "source": "author/run/results/metrics.json",
+      "origin": "run",
+      "sha256": "1b07aae417ac083bd1c8855b1b1a3d400785a85bdc8b0bc7c6e6d802c7572776"
+    },
+    "results/generated-metrics.json": {
+      "source": "paper-only/results/metrics.json",
+      "origin": "run",
+      "sha256": "528e827a9129df159bb062fa99fa0d1867f3ffe6292081fe9a87a72deafb1ede"
+    }
+  },
+  "exclusions": [
+    "author checkout",
+    "checkpoints",
+    "prediction arrays",
+    "dataset",
+    "paper PDF",
+    "raw transcripts",
+    "credentials"
+  ],
+  "note": "Curated subset; original full run/evaluation seals are references, not included full archives."
+}

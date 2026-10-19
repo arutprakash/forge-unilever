@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README.md": "2384f4d87909adefab861792fe261c5ef3bc099bf35ef19df2fb6606c6c4327e",
+    "generated-code/README.md": "58e3e047f1b0f65ebf6be451044384d44369097e93f6f4a63727dcbbf444971b",
+    "generated-code/experiment.py": "c6564a80bc60eec6232f9c8dc6d081bcfb282c7c65164c3796e4ba5a41ec483d",
+    "generated-code/implementation.md": "9196be51a2490699bb1b397b666df1837a73ab7e4edb07c1728e2bd0b3150a2f",
+    "generated-code/replay.json": "65aae748843e4d7e7bef74da8dfd91a88ee1c325e4f5b410a49a3405645ce687",
+    "protocol.json": "f76c66704e269a568ccfa5b8b1395183d593f0ee3a50bed1b69f77a7e2740a15",
+    "provenance.json": "3e755a832be19d3f3ce31838bb0f497607be9b12864898d3cf36e6ecc62033e2",
+    "results/RESULTS.md": "d3e41976fb1ddc9223c0057b2038d942056a277ed2c63c0d2b68e419267439e7",
+    "results/author-metrics.json": "1b07aae417ac083bd1c8855b1b1a3d400785a85bdc8b0bc7c6e6d802c7572776",
+    "results/benchmark-policy.json": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e",
+    "results/benchmark.json": "b6a37c62a7f19228e7fb904218358dbc1aa035576593a0076f87b12a46c81276",
+    "results/comparison.json": "cab2669479961ae4ef5492c2a8abc589f35aaf27e4aeaf531d01b5399ac0bd63",
+    "results/generated-metrics.json": "528e827a9129df159bb062fa99fa0d1867f3ffe6292081fe9a87a72deafb1ede"
+  },
+  "note": "Local hash seal; archive its hash externally to detect replacement of the entire seal."
+}

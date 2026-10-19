@@ -1,0 +1,41 @@
+{
+  "files": [
+    "experiment.py",
+    "checkpoints/OLS.npz",
+    "checkpoints/OLS_IN.npz"
+  ],
+  "commands": [
+    {
+      "model": "OLS",
+      "argv": [
+        "python",
+        "experiment.py",
+        "predict",
+        "--checkpoint",
+        "checkpoints/OLS.npz",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/OLS.npy"
+      ]
+    },
+    {
+      "model": "OLS_IN",
+      "argv": [
+        "python",
+        "experiment.py",
+        "predict",
+        "--checkpoint",
+        "checkpoints/OLS_IN.npz",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/OLS_IN.npy"
+      ]
+    }
+  ]
+}
