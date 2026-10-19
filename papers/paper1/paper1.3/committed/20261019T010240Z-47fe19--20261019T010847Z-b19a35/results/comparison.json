@@ -1,0 +1,68 @@
+{
+  "models": [
+    {
+      "model": "Linear",
+      "metrics": {
+        "mse": {
+          "author": 0.3858072192574762,
+          "generated": 0.37838228076429353,
+          "difference": -0.007424938493182653,
+          "relative_gap": -0.019245203621312934,
+          "absolute_relative_gap": 0.019245203621312934,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.40831329555246376,
+          "generated": 0.4019497863846208,
+          "difference": -0.006363509167842951,
+          "relative_gap": -0.015584868867012708,
+          "absolute_relative_gap": 0.015584868867012708,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "NLinear",
+      "metrics": {
+        "mse": {
+          "author": 0.3786296056458848,
+          "generated": 0.38120723732041484,
+          "difference": 0.002577631674530012,
+          "relative_gap": 0.006807792196104059,
+          "absolute_relative_gap": 0.006807792196104059,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3984570799847036,
+          "generated": 0.4017895649918004,
+          "difference": 0.0033324850070968193,
+          "relative_gap": 0.008363472942241986,
+          "absolute_relative_gap": 0.008363472942241986,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "DLinear",
+      "metrics": {
+        "mse": {
+          "author": 0.38167453648860616,
+          "generated": 0.38317105213186403,
+          "difference": 0.0014965156432578675,
+          "relative_gap": 0.003920920837490928,
+          "absolute_relative_gap": 0.003920920837490928,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.40602823039361696,
+          "generated": 0.40781397954167103,
+          "difference": 0.0017857491480540721,
+          "relative_gap": 0.004398091103968088,
+          "absolute_relative_gap": 0.004398091103968088,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "outcome": "numerical_match"
+}

@@ -1,0 +1,53 @@
+1. **Key Point:** Reversible instance normalization and frequency filtering
+
+   **Reference Code Implementation Summary:** `Model.forward` subtracts each window’s per-channel temporal mean and divides by the square root of sample variance plus `1e-5`. It applies temporal rFFT and retains complex bins `0:cut_freq`, including DC. Output normalization is reversed using the saved statistics.
+
+   **Generated Code Analysis & Comparison:** `FITS.forward` implements the same normalization–rFFT–denormalization sequence and preserves complex coefficients and phase. However, it uses population variance (`unbiased=False`) rather than the reference’s sample variance. It retains bins `1:cutoff+1`, excluding DC, and subsequently restores zero DC. This follows the supplied paper criterion but differs functionally from the reference, which includes DC and permits the interpolation layer to produce a nonzero DC coefficient.
+
+   **Score:** 14/20 points
+
+   **Reasoning for Score:** The core mechanism is complete, but variance estimation and spectral indexing differ. The DC treatment changes the learned mapping and constrains the normalized output mean, so this is not near-identical replication.
+
+2. **Key Point:** A single shared complex-valued interpolation layer
+
+   **Reference Code Implementation Summary:** With `individual=False`, the reference uses one complex `nn.Linear(K, int(K * length_ratio))`, including bias, applied identically across channels.
+
+   **Generated Code Analysis & Comparison:** The generated model likewise uses one complex linear layer with bias, shared across all seven channels, without additional layers or nonlinearities. Both jointly transform real and imaginary components through complex multiplication. Its configured dimensions are `26 → 39`, whereas the reference configuration gives `58 → 88`.
+
+   **Score:** 20/20 points
+
+   **Reasoning for Score:** The interpolation module itself is functionally equivalent for a given cutoff. The differing cutoff configuration is assessed under the cutoff criterion below.
+
+3. **Key Point:** Joint backcast–forecast output and time-domain supervision
+
+   **Reference Code Implementation Summary:** The reference zero-pads interpolated coefficients starting at DC, reconstructs 276 time steps with irFFT, multiplies by `276/180`, and reverses instance normalization. Its training function supports both joint and forecast-only losses, but the executable entry point calls `train(..., ft=True)`, selecting forecast-only supervision. Validation and testing use the final 96 steps.
+
+   **Generated Code Analysis & Comparison:** The generated model also reconstructs 276 steps, applies the same amplitude factor, and reverses normalization. It explicitly specifies the irFFT length and pads coefficients starting at bin one, preserving zero DC. Training minimizes MSE against concatenated history and future, with the executable metric name identifying joint supervision. Evaluation uses only the final 96 steps.
+
+   **Score:** 14/20 points
+
+   **Reasoning for Score:** Output length, amplitude compensation, and forecast extraction match. Joint supervision satisfies the stated paper strategy and matches a supported reference branch, but differs from the reference’s actual forecast-only training run. DC placement also changes reconstruction behavior.
+
+4. **Key Point:** Frozen dimensions and validation-selected cutoff
+
+   **Reference Code Implementation Summary:** The reference obtains lookback and horizon from the protocol. It fixes the cutoff using `(lookback // 24 + 1) * 6 + 10`, yielding 58 retained bins and 88 interpolated bins. It does not perform validation-based cutoff selection.
+
+   **Generated Code Analysis & Comparison:** The generated code correctly obtains dimensions from the protocol, giving lookback 180 and horizon 96. However, it hardcodes cutoff 26, yielding 39 interpolated coefficients. It neither searches daily harmonic candidates nor selects cutoff using validation performance. Its executable indexing establishes that DC is excluded, but no harmonic-to-bin conversion is implemented. Neither implementation uses test results for cutoff selection.
+
+   **Score:** 6/20 points
+
+   **Reasoning for Score:** Frozen temporal dimensions are correct, but cutoff configuration differs substantially from the reference, and the requested validation-based cutoff selection is absent. The reference also lacks that search; it should not be credited as implementing it.
+
+5. **Key Point:** Frozen training, checkpoint selection, and evaluation
+
+   **Reference Code Implementation Summary:** The reference seeds Python, NumPy, and PyTorch; uses training-only per-channel population standardization; constructs chronological stride-one windows; trains with Adam and constant learning rate; selects checkpoints by validation forecasting MSE; restores the best checkpoint; and only then evaluates standardized test forecasts.
+
+   **Generated Code Analysis & Comparison:** The generated code reproduces these controls through the supplied protocol: seed 42, learning rate `0.001`, batch size 64, shuffled training, no dropped final batch, maximum 50 epochs, and patience five. It uses the prescribed split boundaries and training statistics, aggregates validation forecasting error across all elements, restores the lowest-validation-MSE checkpoint, and evaluates all 3,389 eligible test windows over 96 steps and seven channels. Test MSE and MAE are aggregated in standardized units. Test values do not participate in checkpoint selection.
+
+   **Score:** 20/20 points
+
+   **Reasoning for Score:** The relevant training controls, data handling, checkpoint selection, and evaluation are functionally equivalent. The supervision difference is assessed separately above.
+
+**Overall Score:** 74/100 points
+
+The generated code faithfully implements shared complex interpolation and the frozen evaluation protocol. The main discrepancies are the hardcoded cutoff, absent cutoff search, different DC handling and variance convention, and joint supervision where the reference executable selects forecast-only training.

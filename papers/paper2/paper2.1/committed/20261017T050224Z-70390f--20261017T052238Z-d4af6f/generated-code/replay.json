@@ -1,0 +1,1 @@
+{"files":["run.py","models.py","checkpoints/FITS.pt"],"commands":[{"model":"FITS","argv":["python","run.py","predict","--checkpoint","checkpoints/FITS.pt","--dataset","/inputs/dataset.csv","--protocol","/inputs/protocol.json","--output","/replay-output/FITS.npy"]}]}

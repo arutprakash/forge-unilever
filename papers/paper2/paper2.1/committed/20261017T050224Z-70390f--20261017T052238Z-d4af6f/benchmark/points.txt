@@ -1,0 +1,32 @@
+No code or scoring rubric was supplied, so replication scores cannot be assigned. The five criteria below define what to check against the paper and frozen protocol.
+
+1. **Reversible instance normalization and frequency filtering.** Normalize each input window separately per channel over its 180 time steps, retain its normalization statistics, and reverse normalization on the output. Apply rFFT along time and retain only frequencies below the cutoff. This instance normalization is additional to the protocol’s training-set standardization. The paper requires a zero-mean spectrum and describes excluding DC before interpolation, then restoring a zero DC component before irFFT. Its spectral representation is
+   \[
+   X(f)=|X(f)|e^{j\theta(f)}.
+   \]
+   Check that filtering preserves complex coefficients, including phase, rather than using only magnitudes.
+
+2. **A single shared complex-valued interpolation layer.** Use one complex linear layer to map retained input frequencies to the extended spectrum, sharing its weights across all seven channels. Complex multiplication must jointly model amplitude scaling and phase shifting, consistent with
+   \[
+   X_\tau(f)=e^{-j2\pi f\tau}X(f).
+   \]
+   For cutoff dimension \(K\), the intended mapping is from \(K\) to approximately \(\eta K\) complex coefficients, with integer sizing explicitly documented. Separate unrestricted real and imaginary networks, extra nonlinear layers, or independently learned channel models do not reproduce this forecasting architecture.
+
+3. **Joint backcast–forecast output and time-domain supervision.** Extend the input to the combined lookback and forecast length:
+   \[
+   L_o=L+H=276,\qquad
+   \eta_{\mathrm{Fore}}=1+\frac{H}{L}
+   =\frac{276}{180}=\frac{23}{15},
+   \qquad \eta_{\mathrm{freq}}=\eta_{\mathrm{Fore}}.
+   \]
+   Zero-pad the interpolated spectrum, restore DC as described, and apply irFFT with the correct output length and consistent amplitude normalization. Reverse instance normalization afterward. For the paper’s joint supervision strategy, compare the full output with concatenated history and future:
+   \[
+   \mathcal L_{\mathrm{B+F}}
+   =\frac{1}{276C}\sum_{t=1}^{276}\sum_{c=1}^{C}
+   (\hat y_{t,c}-y_{t,c})^2,\qquad C=7.
+   \]
+   Evaluate only the final 96 steps. The paper also reports forecast-only supervision as an experimental variant; code must identify which variant it implements.
+
+4. **Frozen dimensions and validation-selected cutoff.** Fix lookback to 180 and horizon to 96; the paper’s lookback search is overridden. Preserve cutoff selection using validation performance alone. For hourly ETT, the paper explores cutoffs associated with the second through sixth harmonics of the daily base frequency. Document the harmonic-to-bin conversion, rounding, DC indexing, and resulting layer dimensions; the text does not uniquely specify every integer convention. Do not infer a compulsory 10,000-parameter budget from the title or select the cutoff using test results.
+
+5. **Frozen training, checkpoint selection, and evaluation.** Use seed 42, Adam, constant learning rate \(0.001\), batch size 64, shuffled training batches, `drop_last=false`, at most 50 epochs, and patience 5. Restore the checkpoint with lowest validation forecasting MSE before testing. Use the specified chronological boundaries \(10452/13936/17420\), and per-channel training mean and population standard deviation. Evaluate every eligible test forecast window at stride 1, keeping targets inside the test interval, and aggregate standardized-unit MSE and MAE across all windows, 96 forecast steps, and seven channels. Test data must remain unused during selection. The frozen single seed overrides the paper’s five-run reporting.

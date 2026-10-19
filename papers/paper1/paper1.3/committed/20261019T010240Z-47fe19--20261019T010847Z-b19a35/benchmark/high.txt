@@ -1,0 +1,11 @@
+1. **Linear: [20/20 points].** Uses a bias-free \(336\rightarrow96\) projection shared across all channels. Forecasts all future steps directly, with no cross-channel mixing or additional layers.
+
+2. **NLinear: [20/20 points].** Subtracts each channel’s final input value, applies the shared projection, and restores that same value to every forecast step. Dataset standardization remains separate.
+
+3. **DLinear: [20/20 points].** Uses a length-preserving moving average with kernel 25, subtracts the trend to obtain the seasonal component, and sums two independent shared temporal projections. Replicate padding is compatible with the unspecified boundary rule.
+
+4. **Model and optimization hyperparameters: [20/20 points].** With the supplied protocol, uses the required dimensions, seven features, seed, batch size, and constant-rate Adam optimizer. The runner trains all three models separately. Default initialization does not violate the stated criterion.
+
+5. **Training, selection, and evaluation: [20/20 points].** Implements the epoch limit, patience, shuffled training, and incomplete batches. Standardization uses training-only per-channel population statistics. Validation selects the restored checkpoint before test evaluation. Chronological target boundaries and stride-one windows are correct; MSE and MAE aggregate every forecast element in standardized units.
+
+**Final score: 100/100 points.**

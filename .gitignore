@@ -4,3 +4,5 @@ __pycache__/
 paper1/results/**/.matplotlib/
 paper1/results/**/*.pth
 paper1/results/**/*.npy
+**/runs/
+**/evaluations/

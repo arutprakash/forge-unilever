@@ -1,0 +1,36 @@
+No implementation or scoring rubric was supplied, so replication scores cannot be assigned. The five criteria supported by the paper and frozen protocol are:
+
+1. **Linear: shared temporal projection and direct forecasting.** For each channel \(i\), implement the paper’s mapping
+   \[
+   \hat{\mathbf{x}}_i=W\mathbf{x}_i,\qquad W\in\mathbb{R}^{96\times336}.
+   \]
+   The same weights apply to all seven channels independently. Predict all 96 future steps simultaneously, without autoregressive feedback, cross-channel mixing, attention, embeddings, or hidden nonlinear layers.
+
+2. **NLinear: last-value normalization and restoration.** Implement
+   \[
+   a_i=x_{336,i},\qquad
+   \hat{\mathbf{x}}_i
+   =W(\mathbf{x}_i-a_i\mathbf{1}_{336})
+   +a_i\mathbf{1}_{96}.
+   \]
+   Subtract each input window’s final observed value separately for each channel, apply the shared temporal projection, and restore that same value to every predicted step. This operation is additional to protocol standardization.
+
+3. **DLinear: decomposition, separate projections, and summation.** Implement the method described in Section 4:
+   \[
+   \mathbf{t}_i=\operatorname{MovingAverage}_{25}(\mathbf{x}_i),
+   \qquad
+   \mathbf{s}_i=\mathbf{x}_i-\mathbf{t}_i,
+   \]
+   \[
+   \hat{\mathbf{x}}_i=W_s\mathbf{s}_i+W_t\mathbf{t}_i.
+   \]
+   Preserve the input length during decomposition. Use two independently learned \(96\times336\) temporal projections, each shared across channels, and sum their forecasts. The supplied paper does not specify the moving-average boundary-padding rule.
+
+4. **Fixed model and optimization hyperparameters.** Use lookback 336, horizon 96, seven channels, DLinear kernel size 25, seed 42, batch size 64, and Adam with constant learning rate \(0.001\). Train each of Linear, NLinear, and DLinear separately. The paper’s \(1/L\) DLinear initialization is explicitly described for weight-visualization experiments; it is not established as mandatory for the main forecasting experiments.
+
+5. **Training, checkpoint selection, and evaluation.** Train for at most 50 epochs with patience 5, shuffled training windows, and `drop_last=false`; select and restore the checkpoint with lowest validation MSE. Respect chronological boundaries 8640/11520/14400 and fit per-channel mean and population standard deviation using training observations only. After selection, evaluate every eligible test window at stride 1, reporting standardized-unit MSE and MAE over all windows, 96 forecast steps, and seven channels:
+   \[
+   \operatorname{MSE}=\frac{1}{N\cdot96\cdot7}\sum_{n,h,c}(\hat y_{n,h,c}-y_{n,h,c})^2,\quad
+   \operatorname{MAE}=\frac{1}{N\cdot96\cdot7}\sum_{n,h,c}|\hat y_{n,h,c}-y_{n,h,c}|.
+   \]
+   Test results must not influence training or checkpoint selection.

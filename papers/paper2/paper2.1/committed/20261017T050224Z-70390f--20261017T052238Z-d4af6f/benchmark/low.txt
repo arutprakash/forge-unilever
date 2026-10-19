@@ -1,0 +1,32 @@
+Similarities:
+
+- Both models use the same broad pipeline: per-window normalization → real FFT → frequency truncation → one shared complex linear layer with bias → zero padding → inverse FFT → length-ratio scaling → denormalization.
+- Both apply the frequency projection independently to each channel with shared weights. The standard configuration uses `individual=False`; no active auxiliary NLinear module is present.
+- Both use protocol-defined batch size, learning rate, shuffle setting, epoch limit, and patience; Adam uses its default remaining parameters, and the learning rate remains constant.
+- Both standardize features using training-partition statistics, construct identical chronological windows, retain incomplete batches, seed Python/NumPy/PyTorch, and enable deterministic execution in their entry points.
+- Both perform ordinary zero-gradient, backward, and optimizer-step updates. Both select using validation forecast MSE with strict improvement and patience, restore the selected model, and evaluate the test partition afterward. No test-driven training or selection is evident.
+
+Differences:
+
+- **Frequency selection and placement — standard `Model.forward` versus generated `FITS.forward`:** The standard retains bins `0:cut_freq`, including DC, and places projected bins starting at index zero. The generated version retains `1:cutoff+1` and places projected bins starting at index one. This changes both the input frequencies and their output interpretation. In particular, the generated model cannot learn an output DC correction through the projection.
+- **Cutoff configuration — standard `config(p)` versus generated `train`:** The standard computes `(lookback//24+1)*6+10`; the generated code fixes the cutoff at `26`. These match only for particular lookbacks. Otherwise, projection dimensions, parameter counts, and retained bandwidth differ.
+- **Normalization — forward functions:** The standard uses `torch.var` with its default sample-variance correction; the generated model uses `unbiased=False`. This changes normalization scales and resulting predictions and gradients.
+- **Parameter initialization — constructors:** The standard initializes a real `nn.Linear` and then casts it to complex, giving initially zero imaginary components. The generated code constructs a complex linear layer directly, using complex initialization. Identical seeds therefore do not imply identical initial parameters or training trajectories.
+- **Inverse FFT length — forward functions:** The generated code explicitly supplies `n=lookback+horizon`; the standard omits `n`. They agree for even total lengths. For odd total lengths, the standard reconstructs one fewer time step, whereas the generated model reconstructs the requested length.
+- **Training objective — standard `e.train(..., ft=True)` versus generated training loop:** The executed standard path minimizes MSE over the forecast horizon only. The generated code minimizes MSE against `torch.cat([x,y],1)` across reconstruction and forecasting. It therefore adds a backcast objective and weights the forecast contribution by its share of the total sequence length. This is a major experimental mismatch.
+- **Validation arithmetic — standard `vali` versus generated `evaluate`:** Both mathematically compute equally weighted forecast MSE, but the standard computes float32 batch means before sample-weighted aggregation, while the generated code accumulates squared float64 errors. Small numerical differences could affect nearly tied validation selections.
+- **Return interface:** The standard returns predictions plus an auxiliary reconstruction tensor; the generated model returns predictions alone. Callers accommodate this, so it adds no independent loss difference.
+
+Scoring:
+
+Overall Structure: 22/25 (The principal modules and forward pipeline closely match, but spectral indexing changes the actual frequency flow.)
+
+Model Details: 17/25 (The shared complex projection matches conceptually; frequency bins, cutoff configuration, variance correction, initialization, and odd-length reconstruction differ.)
+
+Training Details: 16/25 (Optimizer and training controls align, but forecast-only MSE is replaced with a materially different reconstruction-plus-forecast objective.)
+
+Experimental Integrity: 21/25 (Data splits, preprocessing, update mechanics, and validation-based selection align without evident test leakage. The changed objective and initialization prevent faithful experimental replication.)
+
+Total Score: 76/100
+
+The implementations are not completely equivalent. The score reflects substantial structural and procedural agreement, with consequential differences in spectral computation and the training objective that prevent treating their results as interchangeable.

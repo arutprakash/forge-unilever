@@ -1,0 +1,174 @@
+{
+  "run_id": "20261019T010240Z-47fe19",
+  "experiment": "paper1.3",
+  "source_seal": {
+    "verified_files": 378,
+    "seal_sha256": "b1fa6df63129b3019bf8b37c70238c7d251933780643176a60f239b46e4447ef"
+  },
+  "evaluation_id": "20261019T010847Z-b19a35",
+  "evaluation_seal": {
+    "verified_files": 171,
+    "seal_sha256": "2a157657cb516cc5832e218d4975a2b9dabd7a0078ef9bb74a31143d61b5f689"
+  },
+  "author": {
+    "url": "https://github.com/cure-lab/LTSF-Linear",
+    "ref": "HEAD"
+  },
+  "author_commit": "0c113668a3b88c4c4ee586b8c5ec3e539c4de5a6",
+  "inputs": {
+    "dataset.csv": {
+      "bytes": 2589657,
+      "sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066"
+    },
+    "paper.pdf": {
+      "bytes": 1584902,
+      "sha256": "97abddd1821cc72942c8d7ddde7e99466bb91f1bddc37c2b54e0e97be7b5be1b"
+    },
+    "protocol.json": {
+      "bytes": 930,
+      "sha256": "ba1b87de83712a18189ce1241471d8df91b3143ea1d1bd1de0a0996a25cfed26"
+    }
+  },
+  "images": {
+    "runtime": {
+      "tag": "forge-runtime:20db5c5ae344",
+      "id": "sha256:bd14e21fed03ece21c8cde9b66a11f1dd4afd7fd9372cb7e39b317d5bc0418b3",
+      "repo_digests": [
+        "forge-runtime@sha256:bd14e21fed03ece21c8cde9b66a11f1dd4afd7fd9372cb7e39b317d5bc0418b3"
+      ]
+    },
+    "controller": {
+      "tag": "forge-controller:20db5c5ae344",
+      "id": "sha256:4bb730446ef325a95f5e94199f46f87090b07b414dd8de682ffbb740b81ae777",
+      "repo_digests": [
+        "forge-controller@sha256:4bb730446ef325a95f5e94199f46f87090b07b414dd8de682ffbb740b81ae777"
+      ]
+    },
+    "proxy": {
+      "tag": "forge-proxy:20db5c5ae344",
+      "id": "sha256:61526e9d7e3d2028b48cc702d55e97ae72d7c748befc0d7a72f8c42ac091e8e2",
+      "repo_digests": [
+        "forge-proxy@sha256:61526e9d7e3d2028b48cc702d55e97ae72d7c748befc0d7a72f8c42ac091e8e2"
+      ]
+    }
+  },
+  "pipeline_sources": {
+    "audit.py": "8b9ed28434ac3b8fd2e464a62d39aca39f0301d587f5e3332ebca7e092e3ac83",
+    "benchmark.py": "3ee8c352c935651a9d1de935eff72a21f77844182efb6546fbd8842a244d43ba",
+    "configuration.py": "fe6a884c04f92c83bdfa2f749e33b5ee5ff2ce7089c8f50609c74cbafb053804",
+    "pipeline.py": "ca31da18e5c3b5c93795b91a8938e16506028a0157fb1253a9c479dad9994942",
+    "suites.py": "063979c0a09e88b0ebaf7bed36b7a0fab2e12b13155087a154655af1844033e7"
+  },
+  "copied_files": {
+    "generated-code/README.md": {
+      "source": "paper-only/generated-code/README.md",
+      "origin": "run",
+      "sha256": "e911004c3fdaf25281c0837d45f0061531f81cf792dc20192352a41e02b71aca"
+    },
+    "generated-code/experiment.py": {
+      "source": "paper-only/generated-code/experiment.py",
+      "origin": "run",
+      "sha256": "6d6a28d1662553559386a558399c8ef6645eda28af4a69fcb6cce45256a10581"
+    },
+    "generated-code/implementation.md": {
+      "source": "paper-only/generated-code/implementation.md",
+      "origin": "run",
+      "sha256": "15158028166ff43b66365c8dfc0e41f3ad3a8b59222ed81089f3c55e18e41a63"
+    },
+    "generated-code/models.py": {
+      "source": "paper-only/generated-code/models.py",
+      "origin": "run",
+      "sha256": "5b924b5c5f5692c88a12a9e94fd32bc7ea18461ee113c47d13f8c1888269c92f"
+    },
+    "generated-code/replay.json": {
+      "source": "paper-only/generated-code/replay.json",
+      "origin": "run",
+      "sha256": "772543a7162efef61b18dea09cac0cc8cac96a4f95db6388361bc9d8b2d07993"
+    },
+    "generated-code/run.py": {
+      "source": "paper-only/generated-code/run.py",
+      "origin": "run",
+      "sha256": "3ff6cd537006a8babbc5a9847df3497ffc438d0c0d624d017bc5f7675ef2a9c8"
+    },
+    "protocol.json": {
+      "source": "inputs/protocol.json",
+      "origin": "run",
+      "sha256": "ba1b87de83712a18189ce1241471d8df91b3143ea1d1bd1de0a0996a25cfed26"
+    },
+    "results/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "run",
+      "sha256": "df0bfa5250458f123f54f81b2e02b0d79a49d6b7bcd872138d5e3e76a4584aef"
+    },
+    "results/benchmark.json": {
+      "source": "benchmark.json",
+      "origin": "run",
+      "sha256": "f2504ca9f3489c76257132d6c294f5fbcac88bcdb37ad62cd3f7149640eb8a2d"
+    },
+    "results/comparison.json": {
+      "source": "comparison.json",
+      "origin": "run",
+      "sha256": "838ef8e64723ead2e56224d75c84afae25737397119f740f5d46cc9c041657fb"
+    },
+    "results/benchmark-policy.json": {
+      "source": "benchmark-policy.json",
+      "origin": "run",
+      "sha256": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e"
+    },
+    "results/author-metrics.json": {
+      "source": "author/run/results/metrics.json",
+      "origin": "run",
+      "sha256": "c41f249f62ea0b600c6350c9e6e4fa6cdda190bef8995c56e2a1fa8101c4fd27"
+    },
+    "results/generated-metrics.json": {
+      "source": "paper-only/results/metrics.json",
+      "origin": "run",
+      "sha256": "a298eb70f453fb3ab67f588ca37e13d9cb2907c9a299c8dbda94b407b3807901"
+    },
+    "benchmark/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "evaluation",
+      "sha256": "5991410790a4ab94cbb84f117152fb2af97db61e9ed66d61c561e3754aad2859"
+    },
+    "benchmark/suite-results.json": {
+      "source": "suite-results.json",
+      "origin": "evaluation",
+      "sha256": "9b6504fc3a60db2f9cee61f08e9a75046ed89249278acc8a633a32ff272b4428"
+    },
+    "benchmark/execution.json": {
+      "source": "execution.json",
+      "origin": "evaluation",
+      "sha256": "00bf72aed5da443c6bc052344c56b495282d54314e218004a5fddb1c146d4822"
+    },
+    "benchmark/points.txt": {
+      "source": "points.txt",
+      "origin": "evaluation",
+      "sha256": "952de4eff6d4813b3856c77647e4eca63c90a5dc8896f3a8eb4dbf780f94ce40"
+    },
+    "benchmark/high.txt": {
+      "source": "high.txt",
+      "origin": "evaluation",
+      "sha256": "52930965e995ba02d2f292fcb54d5062b75b2242eb434dd58019a987198ea4b5"
+    },
+    "benchmark/low.txt": {
+      "source": "low.txt",
+      "origin": "evaluation",
+      "sha256": "4cd072a7362b61b933fe63c0452fc7b4b48dd68dbf58ef8f067067a69ffc542d"
+    },
+    "benchmark/mixed.txt": {
+      "source": "mixed.txt",
+      "origin": "evaluation",
+      "sha256": "0565d17ff9f97ac513d121bf5c3a245cc3d48507355e56321b8dc990bd226934"
+    }
+  },
+  "exclusions": [
+    "author checkout",
+    "checkpoints",
+    "prediction arrays",
+    "dataset",
+    "paper PDF",
+    "raw transcripts",
+    "credentials"
+  ],
+  "note": "Curated subset; original full run/evaluation seals are references, not included full archives."
+}

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "README.md": "b83e499cdbfc8ed8a7e3a204f4c1b56be94d8216c15c60a0401c55cbdb7e9f7f",
+    "benchmark/RESULTS.md": "5991410790a4ab94cbb84f117152fb2af97db61e9ed66d61c561e3754aad2859",
+    "benchmark/execution.json": "00bf72aed5da443c6bc052344c56b495282d54314e218004a5fddb1c146d4822",
+    "benchmark/high.txt": "52930965e995ba02d2f292fcb54d5062b75b2242eb434dd58019a987198ea4b5",
+    "benchmark/low.txt": "4cd072a7362b61b933fe63c0452fc7b4b48dd68dbf58ef8f067067a69ffc542d",
+    "benchmark/mixed.txt": "0565d17ff9f97ac513d121bf5c3a245cc3d48507355e56321b8dc990bd226934",
+    "benchmark/points.txt": "952de4eff6d4813b3856c77647e4eca63c90a5dc8896f3a8eb4dbf780f94ce40",
+    "benchmark/suite-results.json": "9b6504fc3a60db2f9cee61f08e9a75046ed89249278acc8a633a32ff272b4428",
+    "generated-code/README.md": "e911004c3fdaf25281c0837d45f0061531f81cf792dc20192352a41e02b71aca",
+    "generated-code/experiment.py": "6d6a28d1662553559386a558399c8ef6645eda28af4a69fcb6cce45256a10581",
+    "generated-code/implementation.md": "15158028166ff43b66365c8dfc0e41f3ad3a8b59222ed81089f3c55e18e41a63",
+    "generated-code/models.py": "5b924b5c5f5692c88a12a9e94fd32bc7ea18461ee113c47d13f8c1888269c92f",
+    "generated-code/replay.json": "772543a7162efef61b18dea09cac0cc8cac96a4f95db6388361bc9d8b2d07993",
+    "generated-code/run.py": "3ff6cd537006a8babbc5a9847df3497ffc438d0c0d624d017bc5f7675ef2a9c8",
+    "protocol.json": "ba1b87de83712a18189ce1241471d8df91b3143ea1d1bd1de0a0996a25cfed26",
+    "provenance.json": "61cc2b015eb0474ee81dc7acf5f3bfe727924758b4d799090d05b5057562170c",
+    "results/RESULTS.md": "df0bfa5250458f123f54f81b2e02b0d79a49d6b7bcd872138d5e3e76a4584aef",
+    "results/author-metrics.json": "c41f249f62ea0b600c6350c9e6e4fa6cdda190bef8995c56e2a1fa8101c4fd27",
+    "results/benchmark-policy.json": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e",
+    "results/benchmark.json": "f2504ca9f3489c76257132d6c294f5fbcac88bcdb37ad62cd3f7149640eb8a2d",
+    "results/comparison.json": "838ef8e64723ead2e56224d75c84afae25737397119f740f5d46cc9c041657fb",
+    "results/generated-metrics.json": "a298eb70f453fb3ab67f588ca37e13d9cb2907c9a299c8dbda94b407b3807901"
+  },
+  "note": "Local hash seal; archive its hash externally to detect replacement of the entire seal."
+}

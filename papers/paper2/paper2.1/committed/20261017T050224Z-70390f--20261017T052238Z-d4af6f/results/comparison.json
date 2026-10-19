@@ -1,0 +1,26 @@
+{
+  "models": [
+    {
+      "model": "FITS",
+      "metrics": {
+        "mse": {
+          "author": 0.43846100578940234,
+          "generated": 0.458161460205395,
+          "difference": 0.019700454415992663,
+          "relative_gap": 0.0449309155338092,
+          "absolute_relative_gap": 0.0449309155338092,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.4461523794625703,
+          "generated": 0.46271691716303887,
+          "difference": 0.016564537700468562,
+          "relative_gap": 0.03712753414073909,
+          "absolute_relative_gap": 0.03712753414073909,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "outcome": "numerical_match"
+}

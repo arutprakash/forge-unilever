@@ -1,0 +1,18 @@
+{
+  "execution_rate": 1.0,
+  "metric_gaps": [
+    {
+      "model": "FITS",
+      "metric": "mse",
+      "gap": 0.042998934059536344
+    },
+    {
+      "model": "FITS",
+      "metric": "mae",
+      "gap": 0.03579842682655155
+    }
+  ],
+  "mean_gap_across_model_metrics": 0.03939868044304395,
+  "formula": "abs(reference-candidate)/max(reference,candidate); zero/zero=0",
+  "scope": "custom FITS/task metrics; not the 13-task official aggregate"
+}

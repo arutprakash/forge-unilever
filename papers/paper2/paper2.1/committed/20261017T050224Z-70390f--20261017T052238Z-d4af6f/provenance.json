@@ -1,0 +1,168 @@
+{
+  "run_id": "20261017T050224Z-70390f",
+  "experiment": "paper2.1",
+  "source_seal": {
+    "verified_files": 1646,
+    "seal_sha256": "567de71ab95f6398f53cf8d93914d390b5e6932088947627e9e4460da36cbb54"
+  },
+  "evaluation_id": "20261017T052238Z-d4af6f",
+  "evaluation_seal": {
+    "verified_files": 171,
+    "seal_sha256": "5a6dafacc5c252c0fe251ee1201347d77d8cc666014e00099ce5193191f8ff27"
+  },
+  "author": {
+    "url": "https://github.com/VEWOXIC/FITS",
+    "ref": "HEAD"
+  },
+  "author_commit": "d040bb015b6299da26d879b90dd19c80fb72c160",
+  "inputs": {
+    "dataset.csv": {
+      "bytes": 2589657,
+      "sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066"
+    },
+    "paper.pdf": {
+      "bytes": 2003553,
+      "sha256": "92ccf9c1b94ea80be7fd474ad86f3b1b6536d04dcf258e5f85b80a2785d42c6c"
+    },
+    "protocol.json": {
+      "bytes": 911,
+      "sha256": "60b45888f0872e359afb8664e4effd8dfe60a5234daf6032c6635a33719d3e14"
+    }
+  },
+  "images": {
+    "runtime": {
+      "tag": "forge-runtime:c4c3fc2f1938",
+      "id": "sha256:89afb1e94e3dffb2f6290d30b4fd75007adfbbdd69b38bd23c4b0dc57de00037",
+      "repo_digests": [
+        "forge-runtime@sha256:89afb1e94e3dffb2f6290d30b4fd75007adfbbdd69b38bd23c4b0dc57de00037"
+      ]
+    },
+    "controller": {
+      "tag": "forge-controller:c4c3fc2f1938",
+      "id": "sha256:7dea072f899aae386a2534106bc11d68e8aed0c189aab73edd7e9c426efadf37",
+      "repo_digests": [
+        "forge-controller@sha256:7dea072f899aae386a2534106bc11d68e8aed0c189aab73edd7e9c426efadf37"
+      ]
+    },
+    "proxy": {
+      "tag": "forge-proxy:c4c3fc2f1938",
+      "id": "sha256:31100a79da448ae96636cdf348f590c5b2a4092e0dbb0b1577091787fd206522",
+      "repo_digests": [
+        "forge-proxy@sha256:31100a79da448ae96636cdf348f590c5b2a4092e0dbb0b1577091787fd206522"
+      ]
+    }
+  },
+  "pipeline_sources": {
+    "audit.py": "8b9ed28434ac3b8fd2e464a62d39aca39f0301d587f5e3332ebca7e092e3ac83",
+    "benchmark.py": "3ee8c352c935651a9d1de935eff72a21f77844182efb6546fbd8842a244d43ba",
+    "configuration.py": "fe6a884c04f92c83bdfa2f749e33b5ee5ff2ce7089c8f50609c74cbafb053804",
+    "pipeline.py": "d17f63b5a3f9e1015be0469fff7a801eba4ee8bf3874bd42db4545ca8b1523db"
+  },
+  "copied_files": {
+    "generated-code/README.md": {
+      "source": "paper-only/generated-code/README.md",
+      "origin": "run",
+      "sha256": "30c82ff21dcd766a141486e337e18b3c6e8c7e4d2b19b442dddefffd05617a04"
+    },
+    "generated-code/implementation.md": {
+      "source": "paper-only/generated-code/implementation.md",
+      "origin": "run",
+      "sha256": "0594d3714120d044a1ddb4b7d3569917e28455d3b5401984c5a8215c5e91313a"
+    },
+    "generated-code/models.py": {
+      "source": "paper-only/generated-code/models.py",
+      "origin": "run",
+      "sha256": "d515eb0aedbe8bf02ecc3bd4b16290a20de38899e8fa4dd0704b5442de5ce4c7"
+    },
+    "generated-code/replay.json": {
+      "source": "paper-only/generated-code/replay.json",
+      "origin": "run",
+      "sha256": "edc6ea76daa69f89e4dc8536c53716a9a73ee2c1c13844bd6e0e18dffcbe38fd"
+    },
+    "generated-code/run.py": {
+      "source": "paper-only/generated-code/run.py",
+      "origin": "run",
+      "sha256": "f98e1d541bb944563222f5cac79c83f11dbda52ab08147d2cc0094c23d1e0e77"
+    },
+    "protocol.json": {
+      "source": "inputs/protocol.json",
+      "origin": "run",
+      "sha256": "60b45888f0872e359afb8664e4effd8dfe60a5234daf6032c6635a33719d3e14"
+    },
+    "results/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "run",
+      "sha256": "b5dfc2e2e86ccf3e5b4142993d4fe33fed3eb3eb1b02dd34e63565413b1ead65"
+    },
+    "results/benchmark.json": {
+      "source": "benchmark.json",
+      "origin": "run",
+      "sha256": "12ad0f5d67c224a878d17e9cbf5ec7c31ff8e45332897c4accf7d2a66c4b05c1"
+    },
+    "results/comparison.json": {
+      "source": "comparison.json",
+      "origin": "run",
+      "sha256": "1bf6868a7ac4e8422dddd34a24c736adf1f34f883d4745ce0badf0af85383c19"
+    },
+    "results/benchmark-policy.json": {
+      "source": "benchmark-policy.json",
+      "origin": "run",
+      "sha256": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e"
+    },
+    "results/author-metrics.json": {
+      "source": "author/run/results/metrics.json",
+      "origin": "run",
+      "sha256": "d001e5c589e9403ce3ac492aa578ef1d442478da1d700668dceb979877df5252"
+    },
+    "results/generated-metrics.json": {
+      "source": "paper-only/results/metrics.json",
+      "origin": "run",
+      "sha256": "09f76746d31de74bc96e337440ba9dbd0591f790550c8370128d9cec99cf620e"
+    },
+    "benchmark/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "evaluation",
+      "sha256": "e9a218b4a3e2ef7d10dea4f61f10a0f297321c2b5031edae6d1e3fe0bf4dd692"
+    },
+    "benchmark/suite-results.json": {
+      "source": "suite-results.json",
+      "origin": "evaluation",
+      "sha256": "2c3416a9f3255857468c85e832b3063aee0394268c0c90b19b1c41256d075cf0"
+    },
+    "benchmark/execution.json": {
+      "source": "execution.json",
+      "origin": "evaluation",
+      "sha256": "c73aa13b98aa3f097e8126475c8120f721172100963125290d786e7bb742c4dc"
+    },
+    "benchmark/points.txt": {
+      "source": "points.txt",
+      "origin": "evaluation",
+      "sha256": "46a4dfb5fe780625d8aaf2c4ec56d77554d0091d4445370c72eaebc35f4d89c0"
+    },
+    "benchmark/high.txt": {
+      "source": "high.txt",
+      "origin": "evaluation",
+      "sha256": "c3d6a81728393d5cda9172f16e91fdb80bf067629259fc0c6afb17689f3503f1"
+    },
+    "benchmark/low.txt": {
+      "source": "low.txt",
+      "origin": "evaluation",
+      "sha256": "b7c908baa57f2b1122226551c95af2fc4cb9987d979de95b7de4d69d48002f22"
+    },
+    "benchmark/mixed.txt": {
+      "source": "mixed.txt",
+      "origin": "evaluation",
+      "sha256": "b115f22fd197c1ec082ba5b57e77d95922f93f72d5bca63e1dd462cdcc7935b8"
+    }
+  },
+  "exclusions": [
+    "author checkout",
+    "checkpoints",
+    "prediction arrays",
+    "dataset",
+    "paper PDF",
+    "raw transcripts",
+    "credentials"
+  ],
+  "note": "Curated subset; original full run/evaluation seals are references, not included full archives."
+}

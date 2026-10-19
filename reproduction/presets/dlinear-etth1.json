@@ -1,0 +1,76 @@
+{
+  "name": "dlinear-etth1-336-96",
+  "author_url": "https://github.com/cure-lab/LTSF-Linear.git",
+  "protocol": {
+    "dataset": "ETTh1",
+    "models": [
+      "Linear",
+      "NLinear",
+      "DLinear"
+    ],
+    "lookback": 336,
+    "horizon": 96,
+    "features": [
+      "HUFL",
+      "HULL",
+      "MUFL",
+      "MULL",
+      "LUFL",
+      "LULL",
+      "OT"
+    ],
+    "split": {
+      "train_end": 8640,
+      "validation_end": 11520,
+      "test_end": 14400
+    },
+    "standardization": "per-channel training mean and population standard deviation",
+    "seed": 42,
+    "training": {
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 5,
+      "schedule": "constant",
+      "checkpoint_selection": "lowest validation MSE",
+      "training_shuffle": true,
+      "drop_last": false
+    },
+    "evaluation": {
+      "units": "standardized",
+      "metrics": [
+        "mse",
+        "mae"
+      ],
+      "stride": 1,
+      "all_test_windows": true,
+      "test_only_after_selection": true
+    }
+  },
+  "selection": "CPU-ok, easy, high specification quality, suitability 5/5 in supplied workbook; initial forecasting anchor",
+  "published_reference": {
+    "values": {
+      "DLinear": {
+        "mse": 0.375,
+        "mae": 0.399
+      },
+      "NLinear": {
+        "mse": 0.374,
+        "mae": 0.394
+      },
+      "Linear": {
+        "mse": 0.375,
+        "mae": 0.397
+      }
+    },
+    "source_workbook": "Forge_candidate_papers_and_benchmarks.xlsx",
+    "source_sha256": "a4e6b1fbecc74edc8a4b01600811c1144f06b6fb1b4dfc11042afb5198bc01c9",
+    "sheet": "Core 30",
+    "cells": [
+      "C2:P2",
+      "T2"
+    ],
+    "note": "Workbook-transcribed paper Table 2 references, context only; shared training settings differ. Memorization and historical partial-test-batch risk noted in workbook."
+  }
+}

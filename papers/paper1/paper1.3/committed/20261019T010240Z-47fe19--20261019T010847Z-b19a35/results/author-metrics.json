@@ -1,0 +1,56 @@
+{
+  "protocol_sha256": "b2100f99a3b7cde7285f438871caab6c3c09368e9477467b571da220a8844e1f",
+  "dataset_sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066",
+  "prediction_shape": [
+    2785,
+    96,
+    7
+  ],
+  "test_target_start_rows": [
+    11520,
+    14304
+  ],
+  "mean": [
+    7.937742245659508,
+    2.0210386567335163,
+    5.079770601157927,
+    0.7461858799957015,
+    2.781762386375555,
+    0.7884531235540096,
+    17.1282616982271
+  ],
+  "scale": [
+    5.81274940914376,
+    2.0901046504075986,
+    5.51879357903625,
+    1.9263792741329897,
+    1.0235226594952223,
+    0.6302366362251974,
+    9.176491024944383
+  ],
+  "units": "standardized",
+  "results": [
+    {
+      "model": "Linear",
+      "mse": 0.3858072192574762,
+      "mae": 0.40831329555246376,
+      "forecast_elements": 1871520,
+      "predictions_sha256": "5d7f40acc7c11c6a2780e88e5112fb8717dfe544312edcbeb8ba9c441ae7964a"
+    },
+    {
+      "model": "NLinear",
+      "mse": 0.3786296056458848,
+      "mae": 0.3984570799847036,
+      "forecast_elements": 1871520,
+      "predictions_sha256": "38ceabb62965444139c0e779a657fa643644531af38869c4873ee63e574fb116"
+    },
+    {
+      "model": "DLinear",
+      "mse": 0.38167453648860616,
+      "mae": 0.40602823039361696,
+      "forecast_elements": 1871520,
+      "predictions_sha256": "14309ba274f9514b39646a35a5273cae2e4c617e7438a96e58b063d715e94307"
+    }
+  ],
+  "replay_verified": true
+}

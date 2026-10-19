@@ -1,0 +1,11 @@
+1. **Reversible instance normalization and frequency filtering: [20/20 points].** Computes per-window, per-channel mean and population variance, retains those statistics, and reverses normalization after reconstruction. The temporal rFFT preserves complex coefficients and phase. DC is excluded before interpolation and restored as zero through spectrum padding.
+
+2. **Single shared complex-valued interpolation layer: [20/20 points].** Uses one complex `nn.Linear`, shared across all seven channels, without additional networks or nonlinearities. Complex multiplication jointly models amplitude and phase. The implemented dimensions are \(26 \rightarrow \lfloor26(276/180)\rfloor=39\).
+
+3. **Joint backcast–forecast output and supervision: [20/20 points].** Produces 276 steps through zero-padded irFFT, applies the correct \(276/180\) amplitude correction, and reverses instance normalization. Training minimizes MSE against concatenated history and future across all channels. Validation and testing evaluate only the final 96 steps. The implemented loss clearly establishes the joint supervision variant.
+
+4. **Frozen dimensions and validation-selected cutoff: [6/20 points].** Correctly obtains lookback 180 and horizon 96 from the protocol. However, cutoff 26 is hardcoded: there is no validation-based cutoff search across the second through sixth daily harmonics. The harmonic-to-bin conversion and its rounding convention are absent. Spectrum indexing and layer sizing are explicit in the implementation, but they do not establish the required cutoff selection procedure.
+
+5. **Frozen training, checkpoint selection, and evaluation: [20/20 points].** Implements the specified seed, Adam settings, constant learning rate, batch size, training shuffle, incomplete batches, epoch limit, and patience through the supplied protocol. Uses training-only per-channel population standardization and the prescribed chronological splits. Restores the lowest validation forecasting-MSE checkpoint before testing. Evaluates all eligible stride-one test windows and aggregates standardized MSE and MAE over every forecast element. Test results do not influence selection.
+
+**Final score: 86/100 points.**

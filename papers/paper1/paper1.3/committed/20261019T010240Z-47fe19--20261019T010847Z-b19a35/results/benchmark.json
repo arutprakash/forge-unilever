@@ -1,0 +1,162 @@
+{
+  "policy": {
+    "name": "forge-executed-reference-v1",
+    "basis": "Workbook-inspired numerical reproduction; not an official implementation of a published benchmark",
+    "metrics": [
+      "mse",
+      "mae"
+    ],
+    "relative_tolerance": 0.05,
+    "reference": "freshly executed and replayed author implementation on the identical protocol and dataset",
+    "require_prediction_replay": true,
+    "require_all_models": true,
+    "source": {
+      "workbook": "Forge_candidate_papers_and_benchmarks.xlsx",
+      "sha256": "a4e6b1fbecc74edc8a4b01600811c1144f06b6fb1b4dfc11042afb5198bc01c9",
+      "sheet": "Related benchmarks",
+      "cells": [
+        "A10:K10",
+        "A4:K4",
+        "A2:K2",
+        "A9:K9"
+      ],
+      "inspiration": [
+        "AutoReproduce: execution rate and relative performance gap",
+        "RECLAIM: pin targets before execution and trace numbers to runs",
+        "Artisan: distinguish execution failure from numerical mismatch; copying requires review",
+        "AutoExperiment: a 5% comparison band (adopted here as an explicit Forge policy)"
+      ]
+    }
+  },
+  "published_reference": {
+    "values": {
+      "DLinear": {
+        "mse": 0.375,
+        "mae": 0.399
+      },
+      "NLinear": {
+        "mse": 0.374,
+        "mae": 0.394
+      },
+      "Linear": {
+        "mse": 0.375,
+        "mae": 0.397
+      }
+    },
+    "source_workbook": "Forge_candidate_papers_and_benchmarks.xlsx",
+    "source_sha256": "a4e6b1fbecc74edc8a4b01600811c1144f06b6fb1b4dfc11042afb5198bc01c9",
+    "sheet": "Core 30",
+    "cells": [
+      "C2:P2",
+      "T2"
+    ],
+    "note": "Workbook-transcribed paper Table 2 references, context only; shared training settings differ. Memorization and historical partial-test-batch risk noted in workbook."
+  },
+  "published_reference_used_for_pass_fail": false,
+  "execution_rate": 1.0,
+  "stages": {
+    "author": {
+      "status": "evaluated",
+      "elapsed_seconds": 202.74304393200146,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 416054,
+          "cached_input_tokens": 370048,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7155,
+          "reasoning_output_tokens": 92
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    },
+    "paper-only": {
+      "status": "evaluated",
+      "elapsed_seconds": 154.41378966301272,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 247907,
+          "cached_input_tokens": 202496,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4825,
+          "reasoning_output_tokens": 31
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    }
+  },
+  "models": [
+    {
+      "model": "Linear",
+      "metrics": {
+        "mse": {
+          "author": 0.3858072192574762,
+          "generated": 0.37838228076429353,
+          "difference": -0.007424938493182653,
+          "relative_gap": -0.019245203621312934,
+          "absolute_relative_gap": 0.019245203621312934,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.40831329555246376,
+          "generated": 0.4019497863846208,
+          "difference": -0.006363509167842951,
+          "relative_gap": -0.015584868867012708,
+          "absolute_relative_gap": 0.015584868867012708,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "NLinear",
+      "metrics": {
+        "mse": {
+          "author": 0.3786296056458848,
+          "generated": 0.38120723732041484,
+          "difference": 0.002577631674530012,
+          "relative_gap": 0.006807792196104059,
+          "absolute_relative_gap": 0.006807792196104059,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.3984570799847036,
+          "generated": 0.4017895649918004,
+          "difference": 0.0033324850070968193,
+          "relative_gap": 0.008363472942241986,
+          "absolute_relative_gap": 0.008363472942241986,
+          "within_tolerance": true
+        }
+      }
+    },
+    {
+      "model": "DLinear",
+      "metrics": {
+        "mse": {
+          "author": 0.38167453648860616,
+          "generated": 0.38317105213186403,
+          "difference": 0.0014965156432578675,
+          "relative_gap": 0.003920920837490928,
+          "absolute_relative_gap": 0.003920920837490928,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.40602823039361696,
+          "generated": 0.40781397954167103,
+          "difference": 0.0017857491480540721,
+          "relative_gap": 0.004398091103968088,
+          "absolute_relative_gap": 0.004398091103968088,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "method_fidelity": "not automatically established",
+  "copying_assessment": "not automatically established; inspect source and action traces",
+  "outcome": "numerical_match",
+  "all_metrics_within_tolerance": true
+}

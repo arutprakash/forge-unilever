@@ -1,0 +1,59 @@
+{
+  "files": [
+    "experiment.py",
+    "models.py",
+    "checkpoints/Linear.pt",
+    "checkpoints/NLinear.pt",
+    "checkpoints/DLinear.pt"
+  ],
+  "commands": [
+    {
+      "model": "Linear",
+      "argv": [
+        "python",
+        "experiment.py",
+        "predict",
+        "--checkpoint",
+        "checkpoints/Linear.pt",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/Linear.npy"
+      ]
+    },
+    {
+      "model": "NLinear",
+      "argv": [
+        "python",
+        "experiment.py",
+        "predict",
+        "--checkpoint",
+        "checkpoints/NLinear.pt",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/NLinear.npy"
+      ]
+    },
+    {
+      "model": "DLinear",
+      "argv": [
+        "python",
+        "experiment.py",
+        "predict",
+        "--checkpoint",
+        "checkpoints/DLinear.pt",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/DLinear.npy"
+      ]
+    }
+  ]
+}

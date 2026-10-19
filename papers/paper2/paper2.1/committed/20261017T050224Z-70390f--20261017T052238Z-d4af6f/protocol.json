@@ -1,0 +1,47 @@
+{
+  "dataset": "ProvidedHourlyETT",
+  "models": [
+    "FITS"
+  ],
+  "lookback": 180,
+  "horizon": 96,
+  "features": [
+    "HUFL",
+    "HULL",
+    "MUFL",
+    "MULL",
+    "LUFL",
+    "LULL",
+    "OT"
+  ],
+  "timestamp_column": "date",
+  "interval_seconds": 3600,
+  "split": {
+    "train_end": 10452,
+    "validation_end": 13936,
+    "test_end": 17420
+  },
+  "standardization": "per-channel training mean and population standard deviation",
+  "seed": 42,
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "batch_size": 64,
+    "max_epochs": 50,
+    "patience": 5,
+    "schedule": "constant",
+    "checkpoint_selection": "lowest validation MSE",
+    "training_shuffle": true,
+    "drop_last": false
+  },
+  "evaluation": {
+    "units": "standardized",
+    "metrics": [
+      "mse",
+      "mae"
+    ],
+    "stride": 1,
+    "all_test_windows": true,
+    "test_only_after_selection": true
+  }
+}

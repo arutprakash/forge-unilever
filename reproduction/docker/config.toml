@@ -1,0 +1,30 @@
+# Fresh controller-only configuration. No user skills, plugins, history, or MCP
+# connections are imported. All command execution is via the offline MCP worker.
+approval_policy = "never"
+sandbox_mode = "read-only"
+web_search = "disabled"
+check_for_update_on_startup = false
+cli_auth_credentials_store = "file"
+
+[features]
+shell_tool = false
+shell_snapshot = false
+multi_agent = false
+memories = false
+remote_plugin = false
+hooks = false
+
+[apps._default]
+enabled = false
+
+[mcp_servers.offline]
+command = "python3"
+args = ["/opt/pipeline/bridge.py"]
+enabled_tools = ["exec"]
+required = true
+tool_timeout_sec = 700
+
+[mcp_servers.offline.tools.exec]
+# This single tool executes only inside the offline Docker worker. The caller
+# authorizes those experiment commands when starting the pipeline.
+approval_mode = "approve"

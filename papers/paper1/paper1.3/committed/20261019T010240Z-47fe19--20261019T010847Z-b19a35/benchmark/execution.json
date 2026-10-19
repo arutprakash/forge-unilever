@@ -1,0 +1,38 @@
+{
+  "execution_rate": 1.0,
+  "metric_gaps": [
+    {
+      "model": "Linear",
+      "metric": "mse",
+      "gap": 0.019245203621312934
+    },
+    {
+      "model": "Linear",
+      "metric": "mae",
+      "gap": 0.015584868867012708
+    },
+    {
+      "model": "NLinear",
+      "metric": "mse",
+      "gap": 0.006761759542260327
+    },
+    {
+      "model": "NLinear",
+      "metric": "mae",
+      "gap": 0.008294105416015041
+    },
+    {
+      "model": "DLinear",
+      "metric": "mse",
+      "gap": 0.0039056072605997863
+    },
+    {
+      "model": "DLinear",
+      "metric": "mae",
+      "gap": 0.004378832599267485
+    }
+  ],
+  "mean_gap_across_model_metrics": 0.00969506288441138,
+  "formula": "abs(reference-candidate)/max(reference,candidate); zero/zero=0",
+  "scope": "custom FITS/task metrics; not the 13-task official aggregate"
+}

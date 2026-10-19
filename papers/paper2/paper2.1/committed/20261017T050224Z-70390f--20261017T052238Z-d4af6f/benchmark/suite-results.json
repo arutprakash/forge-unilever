@@ -1,0 +1,159 @@
+{
+  "suite": "AutoReproduce",
+  "status": "complete",
+  "upstream_url": "https://github.com/AI9Stars/AutoReproduce",
+  "upstream_commit": "e1a6c9220fadd9f6fae3b5e891eda7fe18989223",
+  "source_run": "/Users/arut/repo/forge-unilever/papers/paper2/paper2.1/runs/20261017T050224Z-70390f",
+  "source_seal": {
+    "verified_files": 1646,
+    "seal_sha256": "567de71ab95f6398f53cf8d93914d390b5e6932088947627e9e4460da36cbb54"
+  },
+  "scope": "custom-task evaluation; not an official ReproduceBench leaderboard result",
+  "judge_model_requested": null,
+  "alignment": {
+    "high": {
+      "components": [
+        20.0,
+        20.0,
+        20.0,
+        6.0,
+        20.0
+      ],
+      "score": 86.0,
+      "maximum": 100
+    },
+    "low": {
+      "components": [
+        22.0,
+        17.0,
+        16.0,
+        21.0
+      ],
+      "score": 76.0,
+      "maximum": 100
+    },
+    "mixed": {
+      "components": [
+        14.0,
+        20.0,
+        14.0,
+        6.0,
+        20.0
+      ],
+      "score": 74.0,
+      "maximum": 100
+    }
+  },
+  "adaptations": [
+    "Existing Codex ChatGPT login replaces upstream query_model API transport; upstream o1/temp=0.6 is not reproduced.",
+    "Recursive Python source is bundled into one top-level file for upstream glob readers; no candidate/reference code executes.",
+    "FITS and the frozen Forge protocol replace curated ReproduceBench tasks/reference code.",
+    "Key points are generated retrospectively from PDF and frozen protocol, not preregistered for this existing run.",
+    "Source and paper text are untrusted judge inputs; alignment scores are model judgments, not proof of correctness."
+  ],
+  "images": {
+    "runtime": "sha256:bd14e21fed03ece21c8cde9b66a11f1dd4afd7fd9372cb7e39b317d5bc0418b3",
+    "controller": "sha256:4bb730446ef325a95f5e94199f46f87090b07b414dd8de682ffbb740b81ae777",
+    "proxy": "sha256:61526e9d7e3d2028b48cc702d55e97ae72d7c748befc0d7a72f8c42ac091e8e2"
+  },
+  "upstream_files": {
+    "cal_per_gap.py": {
+      "bytes": 1200,
+      "sha256": "aaeeb47d600138746bf2c7ee304824ac8c2d50b09b6df80ad5bdc87fa9aeff9f"
+    },
+    "eval_high.py": {
+      "bytes": 4552,
+      "sha256": "c3878a7ea3c93d8d8b9315a6433d945a959785844bcf770e784da7bd613144f9"
+    },
+    "eval_low.py": {
+      "bytes": 10239,
+      "sha256": "55b521ec2616ef58c9da08584fa74ee7633d11d549a7f3a2d451aad5b218f9af"
+    },
+    "eval_mixed.py": {
+      "bytes": 11117,
+      "sha256": "ea9e0ce1b6d904c1e11ad3bcfa3c01bb5beeeaf634d019d32a5c7c3548be3f1c"
+    },
+    "exp_config.py": {
+      "bytes": 9006,
+      "sha256": "3fd9a685693361bbce98fcf426fede32a05905abb522706053ea49137b3793b7"
+    },
+    "summarize_points.py": {
+      "bytes": 3773,
+      "sha256": "c7d342289d4e71715a8c043cdd68a13728e5875f7a4a8798b59a3685f2b26539"
+    }
+  },
+  "adapter_sha256": "92ad90d416c08f83af5974fcc0057c95deea84c78c97bb5a3a77ef5a179207a9",
+  "orchestrator_sha256": "063979c0a09e88b0ebaf7bed36b7a0fab2e12b13155087a154655af1844033e7",
+  "judge_usage": {
+    "points": {
+      "turns": 1,
+      "tokens": {
+        "input_tokens": 31915,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 844,
+        "reasoning_output_tokens": 32
+      },
+      "models": [],
+      "usd": null,
+      "usd_note": "Subscription cost is not inferred from token counts."
+    },
+    "high": {
+      "turns": 1,
+      "tokens": {
+        "input_tokens": 15003,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 426,
+        "reasoning_output_tokens": 0
+      },
+      "models": [],
+      "usd": null,
+      "usd_note": "Subscription cost is not inferred from token counts."
+    },
+    "low": {
+      "turns": 1,
+      "tokens": {
+        "input_tokens": 19161,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 862,
+        "reasoning_output_tokens": 0
+      },
+      "models": [],
+      "usd": null,
+      "usd_note": "Subscription cost is not inferred from token counts."
+    },
+    "mixed": {
+      "turns": 1,
+      "tokens": {
+        "input_tokens": 20276,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1146,
+        "reasoning_output_tokens": 0
+      },
+      "models": [],
+      "usd": null,
+      "usd_note": "Subscription cost is not inferred from token counts."
+    }
+  },
+  "execution": {
+    "execution_rate": 1.0,
+    "metric_gaps": [
+      {
+        "model": "FITS",
+        "metric": "mse",
+        "gap": 0.042998934059536344
+      },
+      {
+        "model": "FITS",
+        "metric": "mae",
+        "gap": 0.03579842682655155
+      }
+    ],
+    "mean_gap_across_model_metrics": 0.03939868044304395,
+    "formula": "abs(reference-candidate)/max(reference,candidate); zero/zero=0",
+    "scope": "custom FITS/task metrics; not the 13-task official aggregate"
+  }
+}

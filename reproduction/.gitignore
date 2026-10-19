@@ -1,0 +1,6 @@
+__pycache__/
+builds/
+runs/
+*.pyc
+auth.json
+.env*

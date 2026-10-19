@@ -1,0 +1,45 @@
+Similarities:
+
+- **Overall forward structure:** All three models map `[batch, lookback, channels]` to `[batch, horizon, channels]`, applying temporal linear projections independently to each channel with weights shared across channels. This matches the standard driver’s `individual=False` configuration.
+- **Linear:** Both transpose the temporal dimension into the last axis, apply one temporal projection, and transpose back.
+- **NLinear:** Both subtract the last observed value, project the centered sequence, and add the last value back.
+- **DLinear:** Both compute a moving average using kernel size 25, stride 1, and 12 replicated endpoint values on each side. Both subtract this trend to obtain the seasonal remainder, project seasonal and trend components separately, and sum their outputs. `F.pad(..., mode='replicate')` and the standard endpoint repetition implement equivalent padding.
+- **Training settings:** Both use protocol-defined batch size, learning rate, training shuffle, epoch limit, and patience; Adam with default remaining settings; a constant learning rate; and mean squared error over all batch, horizon, and channel elements. `(pred-y).square().mean()` is mathematically equivalent to `nn.MSELoss()` with its default reduction.
+- **Experimental pipeline:** Both compute featurewise population normalization statistics exclusively from training rows in float64, then cast standardized data to float32. Window boundaries, historical context, partial-batch inclusion, validation/test ordering, element-weighted evaluation metrics, deterministic settings, seeds, and CPU thread counts match. Both perform zero-gradient → forward → backward → optimizer-step updates and use strict validation improvement with the same patience rule.
+
+Differences:
+
+1. **All temporal projections omit biases in the generated implementation.**  
+   Standard `models/Linear.py`, `models/NLinear.py`, and `models/DLinear.py` use `nn.Linear(...)` with default `bias=True`. Generated `Forecast.__init__` explicitly uses `bias=False` for both `self.linear` and `self.trend`.
+
+   For lookback 336 and horizon 96:
+
+   | Model | Standard parameters | Generated parameters |
+   |---|---:|---:|
+   | Linear / NLinear | 32,352 | 32,256 |
+   | DLinear | 64,704 | 64,512 |
+
+   This removes learnable horizon-specific offsets, restricting the model functions and changing optimization and potentially predictions. The generated parameter-count assertion explicitly enforces this architectural difference.
+
+2. **DLinear initialization and subsequent random sampling differ.**  
+   Both retain PyTorch’s default linear-weight initialization, but the standard seasonal layer also initializes its bias before the trend layer is constructed. Removing that bias changes the random numbers used for the generated trend weights. More generally, different initialization RNG consumption can change subsequent shuffled training orders despite identical seeds. Thus identical seed settings do not guarantee identical training trajectories.
+
+3. **NLinear omits the last-value detachment.**  
+   Standard `Model.forward` uses `x[:, -1:, :].detach()`, whereas generated `Forecast.forward` uses `z[:, :, -1:]` directly. Forward values match apart from the bias difference. For the supplied training pipeline, inputs do not require gradients, so this omission does not change parameter-gradient behavior. It would change gradients with respect to inputs if input differentiation were enabled.
+
+4. **The generated model supports only shared-channel projections.**  
+   Standard model classes additionally implement `individual=True` using separate layers per channel. `Forecast` has no corresponding option. This does not affect the supplied standard driver, which always selects `individual=False`, but the classes are not equivalent across all supported configurations.
+
+Scoring:
+
+Overall Structure: 25/25 (The configured models preserve the same forward stages, temporal/channel handling, decomposition, and output composition.)
+
+Model Details: 21/25 (Pooling and computational organization match, but removing all projection biases materially changes every model; detachment and optional individual-channel support also differ.)
+
+Training Details: 25/25 (Optimizer settings, protocol hyperparameters, constant schedule, and mean-squared-error objective match.)
+
+Experimental Integrity: 23/25 (Preprocessing, splits, updates, evaluation, and stopping rules match, but changed parameter initialization and RNG consumption prevent equivalent seeded training trajectories.)
+
+Total Score: 94/100
+
+The implementations are highly consistent but **not completely equivalent**. The principal mismatch is the deliberate removal of linear biases; the strong pipeline agreement does not establish identical learned models or results.
