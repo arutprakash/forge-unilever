@@ -11,3 +11,13 @@ DataSet - /Users/arut/repo/forge-unilever/datasets/ETTh1.csv
 
 Paper - https://arxiv.org/abs/2205.13504 
 
+```bash
+python3 forge.py preflight
+
+python3 forge.py run \
+  --paper papers/paper1/paper1.pdf \
+  --dataset datasets/ETTh1.csv \
+  --author-repo https://github.com/cure-lab/LTSF-Linear \
+  --experiment paper1.3 \
+  --benchmark-suite autoreproduce
+```
