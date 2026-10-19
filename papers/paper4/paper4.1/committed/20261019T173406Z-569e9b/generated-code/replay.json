@@ -1,0 +1,1 @@
+{"files":["run.py","models.py","checkpoints/TimeBase.pt"],"commands":[{"model":"TimeBase","argv":["python","run.py","--mode","predict","--checkpoint","checkpoints/TimeBase.pt","--dataset","/inputs/dataset.csv","--protocol","/inputs/protocol.json","--output","/replay-output/TimeBase.npy"]}]}

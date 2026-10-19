@@ -1,0 +1,26 @@
+{
+  "models": [
+    {
+      "model": "TimeBase",
+      "metrics": {
+        "mse": {
+          "author": 0.4386625794978096,
+          "generated": 0.4419488867315416,
+          "difference": 0.0032863072337319665,
+          "relative_gap": 0.007491651641437485,
+          "absolute_relative_gap": 0.007491651641437485,
+          "within_tolerance": true
+        },
+        "mae": {
+          "author": 0.4451807121409659,
+          "generated": 0.446823010943251,
+          "difference": 0.0016422988022851137,
+          "relative_gap": 0.0036890609981437873,
+          "absolute_relative_gap": 0.0036890609981437873,
+          "within_tolerance": true
+        }
+      }
+    }
+  ],
+  "outcome": "numerical_match"
+}

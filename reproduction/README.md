@@ -1,5 +1,20 @@
 # Centralized paper reproduction pipeline
 
+## Learning-rate schedules
+
+`training.schedule` accepts `"constant"` or a typed delayed exponential decay:
+
+```json
+{"type": "exponential", "factor": 0.8, "start_epoch": 4}
+```
+
+Epochs start at 1. Before epoch `e`, set LR to
+`base_lr * factor**max(0, e-start_epoch+1)`. Thus epochs 1–3 retain the initial
+LR and epoch 4 first applies the factor. Both execution sessions are instructed
+to apply and log these rates; the metric evaluator does not independently prove
+training-schedule adherence. Other schedules and prose descriptions are rejected
+with a schedule-specific error. Existing constant protocols remain supported.
+
 ## Git-trackable exports
 
 Successful `run` and `benchmark` commands automatically create immutable curated

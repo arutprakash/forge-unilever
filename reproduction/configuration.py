@@ -57,8 +57,19 @@ def validate_protocol(protocol):
     lr = training['learning_rate']
     if not isinstance(lr, (int, float)) or isinstance(lr, bool) or not math.isfinite(lr) or lr <= 0:
         raise ValueError('learning_rate must be positive (ignored for a closed-form solver)')
-    if training['schedule'] != 'constant' or training['checkpoint_selection'] != 'lowest validation MSE':
-        raise ValueError('Unsupported schedule or checkpoint selection')
+    schedule = training['schedule']
+    if schedule != 'constant':
+        if not isinstance(schedule, dict) or set(schedule) != {'type', 'factor', 'start_epoch'}:
+            raise ValueError('Unsupported training.schedule: use "constant" or {"type":"exponential", "factor":0.8, "start_epoch":4}')
+        if schedule['type'] != 'exponential':
+            raise ValueError('Unsupported training.schedule.type: expected exponential')
+        factor, start = schedule['factor'], schedule['start_epoch']
+        if type(factor) not in (int, float) or not math.isfinite(factor) or not 0 < factor <= 1:
+            raise ValueError('training.schedule.factor must be finite and in (0, 1]')
+        if type(start) is not int or not 1 <= start <= 10000:
+            raise ValueError('training.schedule.start_epoch must be an integer in [1, 10000]')
+    if training['checkpoint_selection'] != 'lowest validation MSE':
+        raise ValueError('Unsupported training.checkpoint_selection: expected lowest validation MSE')
     if type(training['training_shuffle']) is not bool or training['drop_last'] is not False:
         raise ValueError('Training must include partial batches')
     expected_evaluation = {'units': 'standardized', 'metrics': ['mse', 'mae'], 'stride': 1,

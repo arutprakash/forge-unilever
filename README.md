@@ -8,6 +8,10 @@ protocol. The pipeline retains code, checkpoints, results, and audit logs.
 The current runtime supports regularly sampled numeric time-series forecasting
 CSVs. See the [pipeline documentation](reproduction/README.md) for full details.
 
+See the [pipeline fix log](FIXES.md) for traced failures, root causes, fixes,
+validation evidence, and recovery commands. The first entry records the paper 4
+learning-rate schedule fix.
+
 ## Architecture
 
 ```mermaid

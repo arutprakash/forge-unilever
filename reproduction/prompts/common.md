@@ -17,6 +17,13 @@ Do not attempt network access. Do not assume another stage's code or outputs.
 
 Read protocol.json. Use exactly its model names, lookback, horizon, feature
 order, training seed, optimizer/training controls, and split boundaries.
+For training.schedule="constant", keep the base learning rate unchanged. For
+{"type":"exponential","factor":f,"start_epoch":s}, use one-based epochs and
+set every optimizer parameter group's LR BEFORE training epoch e to
+base_lr * f**max(0, e-s+1). For f=0.8,s=4, epochs 1-3 use base_lr and epoch 4
+uses base_lr*0.8. Apply identically in author adaptations and independent code;
+log epoch learning rates so schedule adherence can be reviewed. Do not replace
+the structured schedule with a constant LR or advance the scheduler twice.
 Those controls are an experimental protocol, not claims about paper-specified
 hyperparameters. Standardize each channel using ONLY rows [0, train_end), with
 population standard deviation. Build stride-one windows. Validation and test
