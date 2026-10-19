@@ -1,0 +1,208 @@
+{
+  "run_id": "20261019T173325Z-c2ccfa",
+  "experiment": "paper6.1",
+  "started_utc": "2026-10-19T17:33:25.736186+00:00",
+  "finished_utc": "2026-10-19T17:47:32.041963+00:00",
+  "stages": {
+    "author": {
+      "status": "evaluated",
+      "elapsed_seconds": 411.96313183300003,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 801202,
+          "cached_input_tokens": 745216,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6191,
+          "reasoning_output_tokens": 171
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    },
+    "paper-only": {
+      "status": "evaluated",
+      "elapsed_seconds": 157.862305375,
+      "llm_usage": {
+        "turns": 1,
+        "tokens": {
+          "input_tokens": 186020,
+          "cached_input_tokens": 155648,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5965,
+          "reasoning_output_tokens": 445
+        },
+        "models": [],
+        "usd": null,
+        "usd_note": "Subscription cost is not inferred from token counts."
+      }
+    }
+  },
+  "source_seal": {
+    "verified_files": 407,
+    "seal_sha256": "18de7387b9c6e3e9a45d22595e43ec659979bb23d727b8aa8e04e8027add6edc"
+  },
+  "evaluation_id": "20261019T174732Z-589fcb",
+  "evaluation_seal": {
+    "verified_files": 171,
+    "seal_sha256": "d42b611622eae47bc0b28bf93b9fd7856fc284d266523634bfb89db5a7779fb9"
+  },
+  "author": {
+    "url": "https://github.com/hqh0728/CrossGNN.git",
+    "ref": "HEAD"
+  },
+  "author_commit": "0407abd085ee8342abe0bbe6de5b2ab17c44373c",
+  "inputs": {
+    "dataset.csv": {
+      "bytes": 2589657,
+      "sha256": "f18de3ad269cef59bb07b5438d79bb3042d3be49bdeecf01c1cd6d29695ee066"
+    },
+    "paper.pdf": {
+      "bytes": 4574684,
+      "sha256": "6ff12c9ff7a28d985d083ceb5025dd64df67c3b304400f0818c7b89036780e4c"
+    },
+    "protocol.json": {
+      "bytes": 907,
+      "sha256": "3755e2322021de1769242fab36bdf1a3db8bc5422313e9695e1c4b3d38f86e52"
+    }
+  },
+  "images": {
+    "runtime": {
+      "tag": "forge-runtime:20db5c5ae344",
+      "id": "sha256:dbafe9f08a5f21826b77d8537e9c91a4363650386fe5a7ff12041e561a0aaffa",
+      "repo_digests": [
+        "forge-runtime@sha256:dbafe9f08a5f21826b77d8537e9c91a4363650386fe5a7ff12041e561a0aaffa"
+      ]
+    },
+    "controller": {
+      "tag": "forge-controller:20db5c5ae344",
+      "id": "sha256:b76136c50e98cce3a26d4609f15517fa671cda8eb0670dc88a1a45f4cb747d5e",
+      "repo_digests": [
+        "forge-controller@sha256:b76136c50e98cce3a26d4609f15517fa671cda8eb0670dc88a1a45f4cb747d5e"
+      ]
+    },
+    "proxy": {
+      "tag": "forge-proxy:20db5c5ae344",
+      "id": "sha256:4f03b63da051c36653b831d1a2cd688312506196aa740bdb2a6597321ddf51f7",
+      "repo_digests": [
+        "forge-proxy@sha256:4f03b63da051c36653b831d1a2cd688312506196aa740bdb2a6597321ddf51f7"
+      ]
+    }
+  },
+  "pipeline_sources": {
+    "audit.py": "8b9ed28434ac3b8fd2e464a62d39aca39f0301d587f5e3332ebca7e092e3ac83",
+    "benchmark.py": "3ee8c352c935651a9d1de935eff72a21f77844182efb6546fbd8842a244d43ba",
+    "configuration.py": "fe6a884c04f92c83bdfa2f749e33b5ee5ff2ce7089c8f50609c74cbafb053804",
+    "exporter.py": "be53a25b3a38a290b6cf8939919f2ea4f6840df299a237705a0a2e15cd1dd072",
+    "pipeline.py": "4e85605bcd371fc7870017242e336b5a7e68487950389e156f0a6b29f77decf7",
+    "suites.py": "063979c0a09e88b0ebaf7bed36b7a0fab2e12b13155087a154655af1844033e7"
+  },
+  "copied_files": {
+    "generated-code/README.md": {
+      "source": "paper-only/generated-code/README.md",
+      "origin": "run",
+      "sha256": "73c4463446d4e1734caed53d94203a605b3c1fa20b86107c6140e68444a41ae6"
+    },
+    "generated-code/experiment.py": {
+      "source": "paper-only/generated-code/experiment.py",
+      "origin": "run",
+      "sha256": "bd6819675958ab919d55ab14fb6dbc47b981c372fe78da280b2ce8b374af2920"
+    },
+    "generated-code/implementation.md": {
+      "source": "paper-only/generated-code/implementation.md",
+      "origin": "run",
+      "sha256": "d63a250926a575e072f5789e8f126847f0e172af8a588c074195516f4b0c65bc"
+    },
+    "generated-code/models.py": {
+      "source": "paper-only/generated-code/models.py",
+      "origin": "run",
+      "sha256": "df4eb1a4d570250c2d3021082d11c2063e955d5f444145b4629ef7efe314a534"
+    },
+    "generated-code/replay.json": {
+      "source": "paper-only/generated-code/replay.json",
+      "origin": "run",
+      "sha256": "4d4f5aa317a2ff5559ae5e28c013a4c9dffdacd2dc184a2b7946cf3c6b6cec5d"
+    },
+    "protocol.json": {
+      "source": "inputs/protocol.json",
+      "origin": "run",
+      "sha256": "3755e2322021de1769242fab36bdf1a3db8bc5422313e9695e1c4b3d38f86e52"
+    },
+    "results/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "run",
+      "sha256": "6a3efab5967ff7da864a174b26f5bcd655fa8e9f20e123960706a584531f64a2"
+    },
+    "results/benchmark.json": {
+      "source": "benchmark.json",
+      "origin": "run",
+      "sha256": "c14203002e225db1a8bc7af7a4dc0d04d91cfbca5aa2ca43467ec5b3b16c30ae"
+    },
+    "results/comparison.json": {
+      "source": "comparison.json",
+      "origin": "run",
+      "sha256": "19b2b4c90ee943f70ffaa4dcad36c65d492df9ead6eb1f92832b16f98fe53ed3"
+    },
+    "results/benchmark-policy.json": {
+      "source": "benchmark-policy.json",
+      "origin": "run",
+      "sha256": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e"
+    },
+    "results/author-metrics.json": {
+      "source": "author/run/results/metrics.json",
+      "origin": "run",
+      "sha256": "6112b2c60906ee73fdad2ad279fd711a86bc0727b230d5e6729974a9a247aa18"
+    },
+    "results/generated-metrics.json": {
+      "source": "paper-only/results/metrics.json",
+      "origin": "run",
+      "sha256": "cb23113553b43a342cc9f416f6c9c0104309a583bbfda11e35d0d8710e2c58f9"
+    },
+    "benchmark/RESULTS.md": {
+      "source": "RESULTS.md",
+      "origin": "evaluation",
+      "sha256": "5ad82a7b4a81871063220b44fbc8255fe422caf3d1413f1d3bdaf9645ee72d06"
+    },
+    "benchmark/suite-results.json": {
+      "source": "suite-results.json",
+      "origin": "evaluation",
+      "sha256": "d307483b85c9d4decd4a49902ee6d115b094f162ac6688cc7700fa00a7765f5c"
+    },
+    "benchmark/execution.json": {
+      "source": "execution.json",
+      "origin": "evaluation",
+      "sha256": "435981451597fe9a2c3a0530870955f43300adc807e21888b2200b8fa5018067"
+    },
+    "benchmark/points.txt": {
+      "source": "points.txt",
+      "origin": "evaluation",
+      "sha256": "5e55bec4963e98b3ca9b80a0a3085dbdc5676ffb2c0064e029cf5281c4dc778c"
+    },
+    "benchmark/high.txt": {
+      "source": "high.txt",
+      "origin": "evaluation",
+      "sha256": "4fa889f6bc4625a3e3bdc4a81ff946e17e30db9668c5fa5dddf3f51cca1bb489"
+    },
+    "benchmark/low.txt": {
+      "source": "low.txt",
+      "origin": "evaluation",
+      "sha256": "ef4f164a0a0d19ba938719d2f001ce6d83bca8dba614a1b4af0c434425ba04e6"
+    },
+    "benchmark/mixed.txt": {
+      "source": "mixed.txt",
+      "origin": "evaluation",
+      "sha256": "22d1f7859791084cc03804eff5f8bef7f613d22d341fcfe6b3c76a4e9feb0105"
+    }
+  },
+  "exclusions": [
+    "author checkout",
+    "checkpoints",
+    "prediction arrays",
+    "dataset",
+    "paper PDF",
+    "raw transcripts",
+    "credentials"
+  ],
+  "note": "Curated subset; original full run/evaluation seals are references, not included full archives."
+}

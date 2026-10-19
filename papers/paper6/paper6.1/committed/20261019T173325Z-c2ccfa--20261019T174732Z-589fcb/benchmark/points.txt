@@ -1,0 +1,73 @@
+No implementation code or scoring rubric was provided, so replication cannot be scored. The five criteria below define what the code must satisfy; each component’s score is **N/A**.
+
+1. **Adaptive multi-scale identifier and embedding — Score: N/A**
+
+   Compute FFT amplitudes averaged across variables, select the top \(S\) frequencies, and derive pooling periods:
+   \[
+   A=\operatorname{Avg}_{D}(|\operatorname{FFT}(X)|),\qquad
+   \{f_s\}_{s=1}^{S}=\arg\operatorname{TopS}(A),\qquad
+   p_s=\left\lceil L/f_s\right\rceil.
+   \]
+   Construct each scale using nonoverlapping average pooling, then concatenate along time:
+   \[
+   X_s=\operatorname{AvgPool}_{\text{kernel}=\text{stride}=p_s}(X),\qquad
+   X'=\operatorname{Concat}_{t}(X_1,\ldots,X_S).
+   \]
+   Each scale has \(\lfloor L/p_s\rfloor\) time steps, giving \(L'=\sum_s\lfloor L/p_s\rfloor\). Apply an MLP to expand each scalar into \(C\) channels, producing features of shape \(L'\times D\times C\). Fixed pooling periods alone do not reproduce AMSI.
+
+2. **Cross-scale graph construction and propagation — Score: N/A**
+
+   Learn temporal correlations from independent trainable embeddings:
+   \[
+   E^0=\operatorname{Softmax}(\operatorname{ReLU}(U_tV_t)).
+   \]
+   For every temporal node, retain the highest-weight \(k_s=\lceil K/p_s\rceil\) neighbors within each scale. Union these with the same-scale trend neighbors defined by \(|i-j|\leq1\), without connecting adjacent indices across scale boundaries. Mask other edges and renormalize:
+   \[
+   E_{ij}=
+   \frac{\mathbf1[j\in\mathcal N(i)]E^0_{ij}}
+   {\sum_{m\in\mathcal N(i)}E^0_{im}}.
+   \]
+   Implement the paper’s aggregation, concatenation with the previous representation, learned transformation, activation, and feature normalization:
+   \[
+   M_i^{(\ell)}=\sum_jE_{ij}H_j^{(\ell-1)},\quad
+   Z_i^{(\ell)}=\sigma\!\left([M_i^{(\ell)},H_i^{(\ell-1)}]W_\ell\right),\quad
+   H_i^{(\ell)}=\frac{Z_i^{(\ell)}}{\|Z_i^{(\ell)}\|_2}.
+   \]
+   Check handling of overlapping neighbor sets explicitly: Equation (9) defines a union, whereas Equation (10) writes separate sums that can overlap.
+
+3. **Signed cross-variable interaction and direct forecasting decoder — Score: N/A**
+
+   Construct variable correlations using trainable embeddings:
+   \[
+   B=\operatorname{Softmax}(\operatorname{ReLU}(U_vV_v)).
+   \]
+   Select top-\(K_+^{\mathrm{var}}\) homogeneous neighbors and bottom-\(K_-^{\mathrm{var}}\) heterogeneous neighbors. Normalize their weights separately:
+   \[
+   E^{\mathrm{var}}_{ij}=
+   \begin{cases}
+   -\dfrac{1/B_{ij}}{\sum_{k\in\mathcal N_-(i)}1/B_{ik}},
+   &j\in\mathcal N_-(i),\\[6pt]
+   \dfrac{B_{ij}}{\sum_{k\in\mathcal N_+(i)}B_{ik}},
+   &j\in\mathcal N_+(i),\\
+   0,&\text{otherwise}.
+   \end{cases}
+   \]
+   Aggregate signed variable messages, concatenate with previous features, transform, activate, and apply \(L_2\) normalization as in Equation (13). Follow cross-scale processing with cross-variable processing. Decode all future steps simultaneously:
+   \[
+   \widehat X=\operatorname{MLP}_{T}
+   \bigl(\operatorname{MLP}_{C}(H^{\mathrm{var}})\bigr),
+   \]
+   where the channel projection maps \(C\to1\), and the temporal projection maps \(L'\to96\). Output shape must be \(96\times7\) per sample.
+
+4. **Model and optimization hyperparameters — Score: N/A**
+
+   Require \(S=5\), temporal neighbor constant \(K=10\), and \(C=8\) for this small seven-variable ETT dataset. The frozen protocol fixes \(L=96\), horizon \(T=96\), seed \(42\), Adam, learning rate \(0.001\), constant schedule, batch size \(64\), and at most \(50\) epochs. The protocol overrides the paper’s learning-rate search. The supplied paper does not specify numerical values for propagation depth \(N\), variable neighbor counts \(K_\pm^{\mathrm{var}}\), latent embedding widths, or activation choice; exact values cannot be inferred or scored against this text.
+
+5. **Training, checkpoint selection, and forecasting evaluation — Score: N/A**
+
+   Train with MSE over all forecast steps and seven channels:
+   \[
+   \mathcal L=\frac{1}{B\,96\,7}
+   \sum_{b,t,d}(\widehat X_{btd}-X_{btd})^2.
+   \]
+   Shuffle training windows, retain incomplete batches, select the checkpoint with lowest validation MSE, and stop after three consecutive epochs without improvement. Respect boundaries \(10452/13936/17420\), using per-channel training means and population standard deviations. Evaluate the selected checkpoint only after selection, on every eligible test window with stride \(1\), keeping forecast targets inside the test interval. Report standardized-unit MSE and MAE aggregated across all windows, forecast steps, and channels. Neither test performance nor test statistics may influence training or checkpoint selection.

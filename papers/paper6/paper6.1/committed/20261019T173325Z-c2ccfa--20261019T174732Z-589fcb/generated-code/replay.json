@@ -1,0 +1,25 @@
+{
+  "files": [
+    "models.py",
+    "experiment.py",
+    "best_CrossGNN.pt"
+  ],
+  "commands": [
+    {
+      "model": "CrossGNN",
+      "argv": [
+        "python",
+        "experiment.py",
+        "--predict",
+        "--checkpoint",
+        "best_CrossGNN.pt",
+        "--dataset",
+        "/inputs/dataset.csv",
+        "--protocol",
+        "/inputs/protocol.json",
+        "--output",
+        "/replay-output/CrossGNN.npy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "forge-executed-reference-v1",
+  "basis": "Workbook-inspired numerical reproduction; not an official implementation of a published benchmark",
+  "metrics": [
+    "mse",
+    "mae"
+  ],
+  "relative_tolerance": 0.05,
+  "reference": "freshly executed and replayed author implementation on the identical protocol and dataset",
+  "require_prediction_replay": true,
+  "require_all_models": true,
+  "source": {
+    "workbook": "Forge_candidate_papers_and_benchmarks.xlsx",
+    "sha256": "a4e6b1fbecc74edc8a4b01600811c1144f06b6fb1b4dfc11042afb5198bc01c9",
+    "sheet": "Related benchmarks",
+    "cells": [
+      "A10:K10",
+      "A4:K4",
+      "A2:K2",
+      "A9:K9"
+    ],
+    "inspiration": [
+      "AutoReproduce: execution rate and relative performance gap",
+      "RECLAIM: pin targets before execution and trace numbers to runs",
+      "Artisan: distinguish execution failure from numerical mismatch; copying requires review",
+      "AutoExperiment: a 5% comparison band (adopted here as an explicit Forge policy)"
+    ]
+  }
+}
