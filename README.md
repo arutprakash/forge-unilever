@@ -94,10 +94,10 @@ file-backed Codex ChatGPT login. Missing Docker images build automatically.
 python3 forge.py preflight
 
 python3 forge.py run \
-  --paper papers/paper2/paper2.pdf \
+  --paper papers/paper5/paper5.pdf \
   --dataset datasets/ETTh1.csv \
-  --author-repo https://github.com/VEWOXIC/FITS \
-  --experiment paper2.1 \
+  --author-repo https://github.com/MAZiqing/FEDformer \
+  --experiment paper5.1 \
   --benchmark-suite autoreproduce
 ```
 
