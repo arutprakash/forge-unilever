@@ -1,0 +1,66 @@
+Similarities:
+
+- Both use FFT amplitudes to identify periods, construct pooled temporal scales, embed scalar inputs into 8 features, apply temporal graph processing followed by variable graph processing, and produce forecasts shaped `[batch, horizon, features]`.
+- Both learn temporal and variable adjacency matrices from products of trainable embeddings followed by ReLU.
+- Both standardize each feature using training-only means and population standard deviations, and use the same forecast-window boundaries under the intended split configuration.
+- Both use protocol-controlled seeds, batch size, shuffling, learning rate, maximum epochs, and patience. Training uses Adam with default remaining settings, unweighted mean squared error, and the same zero-gradient → forward → backward → optimizer-step sequence. Neither implements learning-rate decay.
+- Both evaluate with gradients disabled and select models using validation MSE with strict improvement and the same patience logic.
+
+Differences:
+
+1. **Overall forward flow and input centering**
+   - Standard `Model.forward` subtracts the detached final observation before graph processing and adds it back after forecasting.
+   - Generated `CrossGNN.forward` omits both operations.
+   - This removes the standard model’s explicit level-shift handling and changes every downstream computation.
+
+2. **FFT period selection**
+   - Standard `FFT_for_Period` averages amplitudes across the batch and variables, selects four frequencies, uses `ceil(L/frequency)`, and prepends period 1.
+   - Generated code selects five frequencies independently per sample, uses floor division, and clamps periods to at least 2.
+   - The generated model loses the original-resolution scale and changes scale selection, pooled values, and dependence on batch composition.
+
+3. **Multiscale representation**
+   - Standard `multi_scale_data` applies nonoverlapping average pooling, concatenates scales, and pads or truncates to exactly `2L` nodes.
+   - Generated code computes equivalent interval averages for its chosen periods using cumulative sums, but uses sample-specific scale boundaries, a variable active node count, and a maximum capacity of `5 * floor(L/2)`.
+   - Pooling mechanics are related, but the resulting representations and temporal dimensions differ substantially.
+
+4. **Temporal adjacency**
+   - Standard temporal embeddings have shapes `[2L, 1]` and `[1, 2L]`, initialized with unscaled standard-normal draws. Generated embeddings use latent dimension 8 and initialization scaled by 0.1.
+   - Standard scale neighborhoods use `min(max(floor(10/period), 5), scale_length)` and threshold comparisons that preserve ties. Generated neighborhoods use `min(ceil(10/period), scale_length)` and rank-based selection.
+   - Standard `add_adjecent_connect` uses `mask[all] = False`; as written, this clears selected entire rows through advanced indexing. Generated code explicitly adds self and immediate-neighbor edges within each scale.
+   - Standard adjacency softmax operates along dimension 0, and aggregation uses `einsum('btdc,tw->bwdc')`. Generated adjacency is row-normalized and aggregated using `bmm(a, h)`.
+   - These differences change graph connectivity, normalization, and propagation direction.
+
+5. **Graph convolution blocks**
+   - Standard `gcn` concatenates `[h, Ah, A²h]`, applies `Linear(24, 8)`, GELU, and dropout 0.05. Each graph block then adds a residual connection.
+   - Generated blocks concatenate one-hop aggregation with current features, apply `Linear(16, 8)`, ReLU, and featurewise L2 normalization.
+   - Generated blocks omit second-order propagation, dropout, and additive residual connections. This changes receptive fields, feature scaling, and regularization.
+
+6. **Variable adjacency**
+   - Standard variable embeddings have latent dimension 1; generated embeddings have latent dimension 8 and smaller initial scale.
+   - Standard positive and negative neighborhoods use threshold masks with `k=min(3, features)`, allowing overlap and ties. Generated neighborhoods use exactly `min(3, features//2)` entries and explicitly exclude positive entries from the negative set.
+   - Standard weights use masked softmax of raw scores and `1/(raw_score+1)`. Generated weights derive from an initial full softmax, with negative weights proportional to reciprocal probabilities.
+   - Variable aggregation also uses different adjacency orientation. Consequently, the signed variable graphs are not equivalent.
+
+7. **Output projection**
+   - Standard concatenates the initial embedding with the final graph output, projects 16 features to one scalar, applies dropout, retains the first `L` nodes, and decodes with `Linear(L, horizon)`.
+   - Generated projects only the final 8 features to one scalar and decodes all padded multiscale positions with `Linear(5 * floor(L/2), horizon)`.
+   - This changes the skip pathway, decoder inputs, and parameter count.
+
+8. **Experimental checks**
+   - Standard preprocessing verifies dataset length and timestamp intervals; generated preprocessing omits these checks. Standard also checks finite training loss and final prediction shape/finiteness.
+   - Generated prediction does not verify that the current protocol matches the checkpoint’s protocol.
+   - These omissions reduce detection of invalid inputs or incompatible evaluation settings. For valid, matching inputs, the basic preprocessing and training-loop mechanics otherwise align. No test-driven parameter updates are evident.
+
+Scoring:
+
+Overall Structure: 14/25 — The broad FFT → multiscale → temporal graph → variable graph → forecast sequence matches, but centering, scale representation, skip pathways, and decoding differ.
+
+Model Details: 7/25 — Most defining computations differ, including period selection, graph construction, propagation order, activations, normalization, initialization, and dropout.
+
+Training Details: 24/25 — Optimizer, loss, protocol-driven training settings, and scheduling behavior match; model regularization differs.
+
+Experimental Integrity: 21/25 — Training-only normalization, windowing, updates, and early stopping align, but input and evaluation safeguards are weaker.
+
+Total Score: 66/100
+
+The implementations are not completely equivalent. The score reflects substantial agreement in the experimental training procedure, alongside a materially different model whose predictions and optimization trajectory should not be expected to reproduce the standard implementation.

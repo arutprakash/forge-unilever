@@ -1,0 +1,26 @@
+{
+  "files": {
+    "README.md": "b4343650ba1e7cc8a1360c7a2d45c78d0541d48f04660fb4505f526b7435855b",
+    "benchmark/RESULTS.md": "5ad82a7b4a81871063220b44fbc8255fe422caf3d1413f1d3bdaf9645ee72d06",
+    "benchmark/execution.json": "435981451597fe9a2c3a0530870955f43300adc807e21888b2200b8fa5018067",
+    "benchmark/high.txt": "4fa889f6bc4625a3e3bdc4a81ff946e17e30db9668c5fa5dddf3f51cca1bb489",
+    "benchmark/low.txt": "ef4f164a0a0d19ba938719d2f001ce6d83bca8dba614a1b4af0c434425ba04e6",
+    "benchmark/mixed.txt": "22d1f7859791084cc03804eff5f8bef7f613d22d341fcfe6b3c76a4e9feb0105",
+    "benchmark/points.txt": "5e55bec4963e98b3ca9b80a0a3085dbdc5676ffb2c0064e029cf5281c4dc778c",
+    "benchmark/suite-results.json": "d307483b85c9d4decd4a49902ee6d115b094f162ac6688cc7700fa00a7765f5c",
+    "generated-code/README.md": "73c4463446d4e1734caed53d94203a605b3c1fa20b86107c6140e68444a41ae6",
+    "generated-code/experiment.py": "bd6819675958ab919d55ab14fb6dbc47b981c372fe78da280b2ce8b374af2920",
+    "generated-code/implementation.md": "d63a250926a575e072f5789e8f126847f0e172af8a588c074195516f4b0c65bc",
+    "generated-code/models.py": "df4eb1a4d570250c2d3021082d11c2063e955d5f444145b4629ef7efe314a534",
+    "generated-code/replay.json": "4d4f5aa317a2ff5559ae5e28c013a4c9dffdacd2dc184a2b7946cf3c6b6cec5d",
+    "protocol.json": "3755e2322021de1769242fab36bdf1a3db8bc5422313e9695e1c4b3d38f86e52",
+    "provenance.json": "9cced33b7320767370ac018d43f05c4ce446b4ad43f04cb6bfd03421e5d4a74b",
+    "results/RESULTS.md": "6a3efab5967ff7da864a174b26f5bcd655fa8e9f20e123960706a584531f64a2",
+    "results/author-metrics.json": "6112b2c60906ee73fdad2ad279fd711a86bc0727b230d5e6729974a9a247aa18",
+    "results/benchmark-policy.json": "a39a77f492a6b7374e5d0961f7a64a63a23e20ea9d42c9a115adb1b304680e5e",
+    "results/benchmark.json": "c14203002e225db1a8bc7af7a4dc0d04d91cfbca5aa2ca43467ec5b3b16c30ae",
+    "results/comparison.json": "19b2b4c90ee943f70ffaa4dcad36c65d492df9ead6eb1f92832b16f98fe53ed3",
+    "results/generated-metrics.json": "cb23113553b43a342cc9f416f6c9c0104309a583bbfda11e35d0d8710e2c58f9"
+  },
+  "note": "Local hash seal; archive its hash externally to detect replacement of the entire seal."
+}

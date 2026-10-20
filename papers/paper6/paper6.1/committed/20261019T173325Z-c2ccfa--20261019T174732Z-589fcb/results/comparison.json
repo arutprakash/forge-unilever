@@ -1,0 +1,26 @@
+{
+  "models": [
+    {
+      "model": "CrossGNN",
+      "metrics": {
+        "mse": {
+          "author": 0.4504104742915619,
+          "generated": 0.9178035755211422,
+          "difference": 0.46739310122958033,
+          "relative_gap": 1.0377047779910757,
+          "absolute_relative_gap": 1.0377047779910757,
+          "within_tolerance": false
+        },
+        "mae": {
+          "author": 0.4499443423437262,
+          "generated": 0.6800987480820109,
+          "difference": 0.23015440573828466,
+          "relative_gap": 0.5115175013412274,
+          "absolute_relative_gap": 0.5115175013412274,
+          "within_tolerance": false
+        }
+      }
+    }
+  ],
+  "outcome": "metric_mismatch"
+}

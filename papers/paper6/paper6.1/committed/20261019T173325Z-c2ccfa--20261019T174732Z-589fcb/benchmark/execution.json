@@ -1,0 +1,18 @@
+{
+  "execution_rate": 1.0,
+  "metric_gaps": [
+    {
+      "model": "CrossGNN",
+      "metric": "mse",
+      "gap": 0.5092517764099881
+    },
+    {
+      "model": "CrossGNN",
+      "metric": "mae",
+      "gap": 0.3384132177677985
+    }
+  ],
+  "mean_gap_across_model_metrics": 0.42383249708889326,
+  "formula": "abs(reference-candidate)/max(reference,candidate); zero/zero=0",
+  "scope": "custom FITS/task metrics; not the 13-task official aggregate"
+}

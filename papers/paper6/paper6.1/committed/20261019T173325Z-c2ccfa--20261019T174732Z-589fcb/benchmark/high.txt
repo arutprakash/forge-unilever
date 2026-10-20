@@ -1,0 +1,16 @@
+1. **Adaptive multi-scale identifier and embedding — [16/20 points]**  
+   Correctly computes FFT amplitudes averaged across variables, selects five frequencies, performs nonoverlapping average pooling, concatenates scales, and embeds scalars into eight channels. However, `l//freq` computes **floor** periods instead of the required **ceiling** periods. This changes pooling windows, scale lengths, and downstream graph structure whenever the frequency does not divide 96.
+
+2. **Cross-scale graph construction and propagation — [20/20 points]**  
+   Implements independent trainable temporal embeddings, ReLU and softmax correlations, per-scale neighbor selection, and masked renormalization. Trend edges stay within scale boundaries. Boolean union explicitly prevents duplicate contributions from overlapping neighbor sets. Aggregation, concatenation, learned transformation, activation, and feature normalization match the criterion.
+
+3. **Signed cross-variable interaction and direct forecasting decoder — [18/20 points]**  
+   Implements separately normalized positive and inverse-weighted negative variable interactions, followed by the required propagation operations. Temporal processing precedes variable processing, and forecasting directly produces all 96 steps across seven channels. Minor deviations: negative selection excludes positive neighbors explicitly, potentially changing bottom-neighbor selection under ties; the decoder uses a padded 240-position input rather than an explicit \(L'\)-input projection. Padding is mathematically compatible with a restricted linear projection, but differs from the specified architecture.
+
+4. **Model and optimization hyperparameters — [20/20 points]**  
+   Sets \(S=5\), \(K=10\), and \(C=8\). With the supplied protocol, uses lookback and horizon 96, seed 42, Adam, learning rate 0.001, constant scheduling, batch size 64, and at most 50 epochs. No deduction is justified for unspecified depth, embedding widths, activation, or variable neighbor counts.
+
+5. **Training, checkpoint selection, and forecasting evaluation — [20/20 points]**  
+   Uses training-only channel means and population standard deviations, correct split boundaries, shuffled training windows, incomplete batches, and mean squared training loss. Selects the lowest validation MSE checkpoint with the prescribed patience. Evaluates that checkpoint on every eligible test window at stride one, keeping targets inside the test interval, and aggregates standardized MSE and MAE across all elements.
+
+**Final score: 94/100 points.**
